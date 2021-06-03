@@ -15,10 +15,9 @@ namespace BingImageAsWallPaper
         {
             var services = CreateHostBuilder(args).Build().Services;
             var wallPaper = services.GetRequiredService<Wallpaper>();
-            var downLoader = services.GetRequiredService<IDownloader>();
-            var fileUtil = services.GetRequiredService<FileUtil>();
-            await downLoader.DownloadAll();
-            wallPaper.Set(fileUtil.RandomImage(), Wallpaper.Style.Stretched);
+            //var downLoader = services.GetRequiredService<IDownloader>();
+            //await downLoader.DownloadAll();
+            wallPaper.SetRandom();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

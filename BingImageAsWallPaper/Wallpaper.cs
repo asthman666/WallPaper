@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using BingImageAsWallPaper.ImageDownload;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,12 @@ namespace BingImageAsWallPaper
 {
     public class Wallpaper
     {
-        public Wallpaper() { }
+        private readonly FileUtil _fileUtil;
+
+        public Wallpaper(FileUtil fileUtil) 
+        {
+            _fileUtil = fileUtil;
+        }
 
         const int SPI_SETDESKWALLPAPER = 20;
         const int SPIF_UPDATEINIFILE = 0x01;
@@ -50,6 +56,11 @@ namespace BingImageAsWallPaper
                 0,
                 imagePath,
                 SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+        }
+
+        public void SetRandom(Style style = Style.Stretched)
+        {
+            Set(_fileUtil.RandomImage(), style);
         }
     }
 }
