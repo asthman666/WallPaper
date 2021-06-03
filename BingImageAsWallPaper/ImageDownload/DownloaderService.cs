@@ -29,13 +29,15 @@ namespace BingImageAsWallPaper.ImageDownload
 
         public async Task<string> Download(Entity.ApiImageEntity item)
         {
-            var uri = new Uri(item.url);
-            var imageData = await _httpClient.GetByteArrayAsync(uri);
-
             var fileName = _fileUtil.GetImageName(item.url);
             var directoryInfo = _fileUtil.CreateImageFolder();
             var path = Path.Combine(directoryInfo.FullName, $"{FILE_PREFIX}-{item.startdate}-{fileName}");
 
+            if (File.Exists(path))
+                return path;
+
+            var uri = new Uri(item.url);
+            var imageData = await _httpClient.GetByteArrayAsync(uri);
             await File.WriteAllBytesAsync(path, imageData);
             return path;
         }
