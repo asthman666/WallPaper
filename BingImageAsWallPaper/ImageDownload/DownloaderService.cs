@@ -33,16 +33,10 @@ namespace BingImageAsWallPaper.ImageDownload
             var imageData = await _httpClient.GetByteArrayAsync(uri);
 
             var fileName = _fileUtil.GetImageName(item.url);
+            var directoryInfo = _fileUtil.CreateImageFolder();
+            var path = Path.Combine(directoryInfo.FullName, $"{FILE_PREFIX}-{item.startdate}-{fileName}");
 
-            //var fileExtension = Path.GetExtension(uriWithoutQuery);
-
-            // Create file path and ensure directory exists
-            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), $"{FILE_PREFIX}-{item.startdate}-{fileName}");
-            //Directory.CreateDirectory(directoryPath);
-
-            //var imageBytes = await httpClient.GetByteArrayAsync(uri);
             await File.WriteAllBytesAsync(path, imageData);
-
             return path;
         }
 

@@ -18,6 +18,12 @@ namespace BingImageAsWallPaperTest
             Assert.Equal("OHR.SocaCycles_ZH-CN3583247274_UHD.jpg", fileUtil.GetImageName(urlString));
         }
 
-
+        [Fact]
+        public void CreateImageFolderTest()
+        {
+            var service = Program.CreateHostBuilder(new string[] { }).Build().Services;
+            var fileUtil = service.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
+            Assert.True(fileUtil.CreateImageFolder().Exists);
+        }
     }
 }
