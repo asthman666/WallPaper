@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp17\BingImageAsWallPaper.csproj" />
+    <ProjectReference Include="..\BingImageAsWallPaper\BingImageAsWallPaper.csproj" />
   </ItemGroup>
 
 </Project>
