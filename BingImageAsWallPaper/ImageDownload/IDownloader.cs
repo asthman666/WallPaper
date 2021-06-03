@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BingImageAsWallPaper.ImageDownload
+{
+    public interface IDownloader
+    {
+        public Task<string> Download(Entity.ApiImageEntity item);
+
+        public Entity.ApiImageEntity FindUrl();
+
+        public IList<Entity.ApiImageEntity> FindUrlList();
+
+        public void DownloadAll();
+
+        public Task<string> DownloadFirst();
+    }
+}
