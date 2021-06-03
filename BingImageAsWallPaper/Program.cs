@@ -16,8 +16,9 @@ namespace BingImageAsWallPaper
             var services = CreateHostBuilder(args).Build().Services;
             var wallPaper = services.GetRequiredService<Wallpaper>();
             var downLoader = services.GetRequiredService<IDownloader>();
-            var path = await downLoader.DownloadFirst();
-            wallPaper.Set(path, Wallpaper.Style.Stretched);
+            var fileUtil = services.GetRequiredService<FileUtil>();
+            await downLoader.DownloadAll();
+            wallPaper.Set(fileUtil.RandomImage(), Wallpaper.Style.Stretched);
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -29,8 +30,6 @@ namespace BingImageAsWallPaper
                     services.AddTransient<IDownloader, DownloaderService>();
                     services.AddTransient<FileUtil>();
                     services.AddTransient<Wallpaper>();
-                    //services.AddTransient<Wallpaper>(_ => new Wallpaper());
-                })                
-            ;
+                });
     }
 }

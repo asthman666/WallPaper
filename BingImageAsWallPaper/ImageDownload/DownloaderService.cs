@@ -58,7 +58,7 @@ namespace BingImageAsWallPaper.ImageDownload
             return null;
         }
 
-        public async void DownloadAll()
+        public async Task DownloadAll()
         {
             var items = FindUrlList();
             foreach ( var item in items )

@@ -9,6 +9,7 @@ namespace BingImageAsWallPaper.ImageDownload
     public class FileUtil
     {
         private const string IMAGE_FOLDER = "bingwallpaper";
+        private string imageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), IMAGE_FOLDER);
 
         public string GetImageName(string url)
         {
@@ -19,8 +20,14 @@ namespace BingImageAsWallPaper.ImageDownload
 
         public DirectoryInfo CreateImageFolder()
         {
-            var directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), IMAGE_FOLDER);
-            return Directory.CreateDirectory(directoryPath);
+            return Directory.CreateDirectory(imageFolder);
+        }
+
+        public string RandomImage()
+        {
+            var rand = new Random();
+            var files = Directory.GetFiles(imageFolder, "*.jpg");
+            return files[rand.Next(files.Length)];
         }
     }
 }
