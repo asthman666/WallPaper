@@ -23,11 +23,37 @@ namespace BingImageAsWallPaper.ImageDownload
             return Directory.CreateDirectory(imageFolder);
         }
 
+        private DirectoryInfo GetImageFolder()
+        {
+            return new DirectoryInfo(imageFolder);
+        }
+
         public string RandomImage()
         {
             var rand = new Random();
             var files = Directory.GetFiles(imageFolder, "*.jpg");
             return files[rand.Next(files.Length)];
+        }
+
+        public bool CheckFileExists(string fileName)
+        {
+            var files = Directory.GetFiles(imageFolder, "*.jpg");
+
+            // NOTE: fileName example: OHR.Pilat_ZH-CN0091553547_UHD.jpg
+
+            var partfileName = fileName.Substring(0, fileName.IndexOf('_'));
+
+            // NOTE: partfileName example: OHR.Pilat
+
+            foreach ( var file in files )
+            {
+                if (file.Contains(partfileName))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

@@ -25,5 +25,13 @@ namespace BingImageAsWallPaperTest
             var fileUtil = service.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
             Assert.True(fileUtil.CreateImageFolder().Exists);
         }
+
+        [Fact]
+        public void CheckFileExists()
+        {
+            var service = Program.CreateHostBuilder(new string[] { }).Build().Services;
+            var fileUtil = service.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
+            Assert.True(fileUtil.CheckFileExists("OHR.Pilat_ZH-CN0091553547_UHD.jpg"));
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace BingImageAsWallPaper.ImageDownload
             var directoryInfo = _fileUtil.CreateImageFolder();
             var path = Path.Combine(directoryInfo.FullName, $"{FILE_PREFIX}-{item.startdate}-{fileName}");
 
-            if (File.Exists(path))
+            if (_fileUtil.CheckFileExists(fileName))
                 return path;
 
             var uri = new Uri(item.url);
