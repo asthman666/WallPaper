@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Xunit;
 
@@ -32,6 +33,14 @@ namespace BingImageAsWallPaperTest
             var service = Program.CreateHostBuilder(new string[] { }).Build().Services;
             var fileUtil = service.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
             Assert.True(fileUtil.CheckFileExists("OHR.Pilat_ZH-CN0091553547_UHD.jpg"));
+        }
+
+        [Fact]
+        public void NewsetImageTest()
+        {
+            var service = Program.CreateHostBuilder(new string[] { }).Build().Services;
+            var fileUtil = service.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210609-OHR.AnnularEclipse_EN-US8858263866_UHD.jpg"), fileUtil.NewestImage());
         }
     }
 }

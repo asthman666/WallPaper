@@ -62,5 +62,10 @@ namespace BingImageAsWallPaper
         {
             Set(_fileUtil.RandomImage(), style);
         }
+
+        public void SetNewest(Style style = Style.Stretched)
+        {
+            Set(_fileUtil.NewestImage(), style);
+        }
     }
 }

@@ -23,13 +23,19 @@ namespace BingImageAsWallPaper
             }
             else if (args[0] == "setbackground")
             {
-                wallPaper.SetRandom();
+                if (DateTime.Now.Hour >= 10 && DateTime.Now.Hour < 11)
+                {
+                    wallPaper.SetNewest();
+                }
+                else
+                {
+                    wallPaper.SetRandom();
+                }
             } 
             else
             {
                 var downLoader = services.GetRequiredService<IDownloader>();
                 await downLoader.DownloadAll();
-                wallPaper.SetRandom();
             }
         }
 

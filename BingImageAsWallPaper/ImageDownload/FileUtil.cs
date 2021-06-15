@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Web;
 
@@ -28,11 +29,18 @@ namespace BingImageAsWallPaper.ImageDownload
             return new DirectoryInfo(imageFolder);
         }
 
+        public string ImageFolder { get { return imageFolder; } }
+
         public string RandomImage()
         {
             var rand = new Random();
             var files = Directory.GetFiles(imageFolder, "*.jpg");
             return files[rand.Next(files.Length)];
+        }
+
+        public string NewestImage()
+        {
+            return new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.CreationTime).FirstOrDefault()?.FullName;
         }
 
         public bool CheckFileExists(string fileName)
