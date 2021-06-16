@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BingImageAsWallPaper.Entity
+﻿namespace BingImageAsWallPaper.Entity
 {
     public class ApiImageEntity
     {

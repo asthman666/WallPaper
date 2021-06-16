@@ -1,14 +1,10 @@
-﻿using BingImageAsWallPaper.Entity;
-using Microsoft.Extensions.Hosting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace BingImageAsWallPaper.ImageDownload
@@ -54,14 +50,14 @@ namespace BingImageAsWallPaper.ImageDownload
                 result.ForEach(x => x.url = BING_URL + x.url);
                 return result;
             }
-                
+
             return null;
         }
 
         public async Task DownloadAll()
         {
             var items = FindUrlList();
-            foreach ( var item in items )
+            foreach (var item in items)
             {
                 await Download(item);
             }

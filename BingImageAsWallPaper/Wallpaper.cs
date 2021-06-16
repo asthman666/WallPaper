@@ -1,10 +1,6 @@
 ﻿using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace BingImageAsWallPaper
 {
@@ -12,7 +8,7 @@ namespace BingImageAsWallPaper
     {
         private readonly FileUtil _fileUtil;
 
-        public Wallpaper(FileUtil fileUtil) 
+        public Wallpaper(FileUtil fileUtil)
         {
             _fileUtil = fileUtil;
         }

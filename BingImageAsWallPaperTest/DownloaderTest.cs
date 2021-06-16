@@ -1,16 +1,13 @@
 using BingImageAsWallPaper;
 using BingImageAsWallPaper.ImageDownload;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.IO;
-using System.Net.Http;
 using Xunit;
 
 namespace BingImageAsWallPaperTest
 {
     public class DownloaderTest : IClassFixture<BaseTest>
-    {       
+    {
         [Fact]
         public void FetchImageListTest()
         {

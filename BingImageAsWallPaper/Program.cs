@@ -1,10 +1,7 @@
 ﻿using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Win32;
 using System;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace BingImageAsWallPaper
@@ -31,7 +28,7 @@ namespace BingImageAsWallPaper
                 {
                     wallPaper.SetRandom();
                 }
-            } 
+            }
             else
             {
                 var downLoader = services.GetRequiredService<IDownloader>();

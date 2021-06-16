@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
 
 namespace BingImageAsWallPaper.ImageDownload
@@ -53,7 +51,7 @@ namespace BingImageAsWallPaper.ImageDownload
 
             // NOTE: partfileName example: OHR.Pilat
 
-            foreach ( var file in files )
+            foreach (var file in files)
             {
                 if (file.Contains(partfileName))
                 {
