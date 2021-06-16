@@ -1,7 +1,9 @@
 ﻿using BingImageAsWallPaper.ImageDownload;
+using BingImageAsWallPaper.Option;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace BingImageAsWallPaper
@@ -13,12 +15,12 @@ namespace BingImageAsWallPaper
             var services = CreateHostBuilder(args).Build().Services;
             var wallPaper = services.GetRequiredService<Wallpaper>();
 
-            if (args[0] == "downloadimage")
+            if (args.Length > 0 && args[0] == "downloadimage")
             {
                 var downLoader = services.GetRequiredService<IDownloader>();
                 await downLoader.DownloadAll();
             }
-            else if (args[0] == "setbackground")
+            else if (args.Length > 0 && args[0] == "setbackground")
             {
                 if (DateTime.Now.Hour >= 10 && DateTime.Now.Hour < 11)
                 {
@@ -33,6 +35,7 @@ namespace BingImageAsWallPaper
             {
                 var downLoader = services.GetRequiredService<IDownloader>();
                 await downLoader.DownloadAll();
+                wallPaper.SetRandom();
             }
         }
 
@@ -40,6 +43,11 @@ namespace BingImageAsWallPaper
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
+                    //services.Configure<FileOption>(hostContext.Configuration.GetSection("FileOption"));
+                    //services.Configure<FileOption>(x => x.ImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wallpaper_test"));
+                    services.AddSingleton( x => 
+                        new FileOption { ImagePath =  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
+                    );
                     services.AddHttpClient();
                     services.AddTransient<IDownloader, DownloaderService>();
                     services.AddTransient<FileUtil>();

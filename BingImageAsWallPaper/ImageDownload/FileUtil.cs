@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BingImageAsWallPaper.Option;
+using System;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -7,8 +8,11 @@ namespace BingImageAsWallPaper.ImageDownload
 {
     public class FileUtil
     {
-        private const string IMAGE_FOLDER = "bingwallpaper";
-        private string imageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), IMAGE_FOLDER);
+        private string imageFolder;
+        public FileUtil(FileOption opt)
+        {
+            this.imageFolder = opt.ImagePath;
+        }
 
         public string GetImageName(string url)
         {
@@ -38,7 +42,7 @@ namespace BingImageAsWallPaper.ImageDownload
 
         public string NewestImage()
         {
-            return new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.CreationTime).FirstOrDefault()?.FullName;
+            return new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.LastWriteTime).FirstOrDefault()?.FullName;
         }
 
         public bool CheckFileExists(string fileName)
