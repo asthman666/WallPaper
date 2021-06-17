@@ -30,22 +30,21 @@ namespace BingImageAsWallPaper
         public int Set(string imagePath, Style style)
         {
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop", true);
-            if (style == Style.Stretched)
-            {
-                key.SetValue(@"WallpaperStyle", 2.ToString());
-                key.SetValue(@"TileWallpaper", 0.ToString());
-            }
 
-            if (style == Style.Centered)
+            switch (style)
             {
-                key.SetValue(@"WallpaperStyle", 1.ToString());
-                key.SetValue(@"TileWallpaper", 0.ToString());
-            }
-
-            if (style == Style.Tiled)
-            {
-                key.SetValue(@"WallpaperStyle", 1.ToString());
-                key.SetValue(@"TileWallpaper", 1.ToString());
+                case Style.Stretched:
+                    key.SetValue(@"WallpaperStyle", 2.ToString());
+                    key.SetValue(@"TileWallpaper", 0.ToString());
+                    break;
+                case Style.Centered:
+                    key.SetValue(@"WallpaperStyle", 1.ToString());
+                    key.SetValue(@"TileWallpaper", 0.ToString());
+                    break;
+                case Style.Tiled:
+                    key.SetValue(@"WallpaperStyle", 1.ToString());
+                    key.SetValue(@"TileWallpaper", 1.ToString());
+                    break;
             }
             key.Close();
             return SystemParametersInfo(SPI_SETDESKWALLPAPER,

@@ -7,9 +7,9 @@ namespace BingImageAsWallPaper.ImageDownload
     {
         public Task<string> Download(Entity.ApiImageEntity item);
 
-        public Entity.ApiImageEntity FindUrl();
+        public Task<Entity.ApiImageEntity> FindUrl();
 
-        public IList<Entity.ApiImageEntity> FindUrlList();
+        public Task<IList<Entity.ApiImageEntity>> FindUrlList();
 
         public Task DownloadAll();
 

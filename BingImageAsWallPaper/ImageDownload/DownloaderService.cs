@@ -25,6 +25,9 @@ namespace BingImageAsWallPaper.ImageDownload
 
         public async Task<string> Download(Entity.ApiImageEntity item)
         {
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+
             var fileName = _fileUtil.GetImageName(item.url);
             var directoryInfo = _fileUtil.CreateImageFolder();
             var path = Path.Combine(directoryInfo.FullName, $"{FILE_PREFIX}-{item.startdate}-{fileName}");
@@ -38,9 +41,9 @@ namespace BingImageAsWallPaper.ImageDownload
             return path;
         }
 
-        public IList<Entity.ApiImageEntity> FindUrlList()
+        public async Task<IList<Entity.ApiImageEntity>> FindUrlList()
         {
-            var responseText = _httpClient.GetStringAsync(BING_API).Result;
+            var responseText = await _httpClient.GetStringAsync(BING_API);
             var regex = new Regex(@"""images"":(?<images>\[.+\])");
 
             Match m = regex.Match(responseText);
@@ -56,7 +59,7 @@ namespace BingImageAsWallPaper.ImageDownload
 
         public async Task DownloadAll()
         {
-            var items = FindUrlList();
+            var items = await FindUrlList();
             foreach (var item in items)
             {
                 await Download(item);
@@ -65,13 +68,14 @@ namespace BingImageAsWallPaper.ImageDownload
 
         public async Task<string> DownloadFirst()
         {
-            var item = FindUrl();
+            var item = await FindUrl();
             return await Download(item);
         }
 
-        public Entity.ApiImageEntity FindUrl()
+        public async Task<Entity.ApiImageEntity> FindUrl()
         {
-            return FindUrlList().FirstOrDefault();
+            var urls = await FindUrlList();
+            return urls.FirstOrDefault();
         }
     }
 }
