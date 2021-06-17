@@ -31,14 +31,14 @@ namespace BingImageAsWallPaperTest
         public void CheckFileExists()
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
-            Assert.True(fileUtil.CheckFileExists("OHR.Pilat_ZH-CN0091553547_UHD.jpg"));
+            Assert.True(fileUtil.CheckFileExists("bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg"));
         }
 
         [Fact]
         public void NewsetImageTest()
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210609-OHR.AnnularEclipse_EN-US8858263866_UHD.jpg"), fileUtil.NewestImage());
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), fileUtil.NewestImage());
         }
     }
 }
