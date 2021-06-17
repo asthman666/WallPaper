@@ -27,7 +27,7 @@ namespace BingImageAsWallPaper
             Stretched
         }
 
-        public void Set(string imagePath, Style style)
+        public int Set(string imagePath, Style style)
         {
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop", true);
             if (style == Style.Stretched)
@@ -47,21 +47,39 @@ namespace BingImageAsWallPaper
                 key.SetValue(@"WallpaperStyle", 1.ToString());
                 key.SetValue(@"TileWallpaper", 1.ToString());
             }
-
-            SystemParametersInfo(SPI_SETDESKWALLPAPER,
+            key.Close();
+            return SystemParametersInfo(SPI_SETDESKWALLPAPER,
                 0,
                 imagePath,
                 SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
         }
 
-        public void SetRandom(Style style = Style.Stretched)
+        // NOTE: https://stackoverflow.com/questions/2745803/how-to-get-the-name-of-the-select-wallpaper
+        public (string Path, Style Style) GetWallPaper()
         {
-            Set(_fileUtil.RandomImage(), style);
+            var wpReg = Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop", false);
+            var wallpaperPath = wpReg.GetValue("WallPaper").ToString();
+            var WallPaperStyle = wpReg.GetValue("WallPaperStyle").ToString();
+            var TileWallpaper = wpReg.GetValue("TileWallpaper").ToString();
+            wpReg.Close();
+
+            var style = Style.Stretched;
+            if (WallPaperStyle == "1" && TileWallpaper == "0")
+                style = Style.Centered;
+
+            if (WallPaperStyle == "1" && TileWallpaper == "1")
+                style = Style.Tiled;
+            return (wallpaperPath, style);
         }
 
-        public void SetNewest(Style style = Style.Stretched)
+        public int SetRandom(Style style = Style.Stretched)
         {
-            Set(_fileUtil.NewestImage(), style);
+            return Set(_fileUtil.RandomImage(), style);
+        }
+
+        public int SetNewest(Style style = Style.Stretched)
+        {
+            return Set(_fileUtil.NewestImage(), style);
         }
     }
 }

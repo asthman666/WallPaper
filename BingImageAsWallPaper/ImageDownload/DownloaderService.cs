@@ -51,7 +51,7 @@ namespace BingImageAsWallPaper.ImageDownload
                 return result;
             }
 
-            return null;
+            return new List<Entity.ApiImageEntity>();
         }
 
         public async Task DownloadAll()
@@ -73,7 +73,5 @@ namespace BingImageAsWallPaper.ImageDownload
         {
             return FindUrlList().FirstOrDefault();
         }
-
-
     }
 }

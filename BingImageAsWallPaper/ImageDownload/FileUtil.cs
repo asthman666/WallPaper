@@ -26,7 +26,7 @@ namespace BingImageAsWallPaper.ImageDownload
             return Directory.CreateDirectory(imageFolder);
         }
 
-        private DirectoryInfo GetImageFolder()
+        public DirectoryInfo GetImageFolder()
         {
             return new DirectoryInfo(imageFolder);
         }
@@ -64,6 +64,11 @@ namespace BingImageAsWallPaper.ImageDownload
             }
 
             return false;
+        }
+
+        public void RemoveFile(string filename)
+        {
+            File.Delete(filename);
         }
     }
 }
