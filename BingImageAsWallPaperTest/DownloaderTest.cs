@@ -15,18 +15,20 @@ namespace BingImageAsWallPaperTest
         }
 
         [Fact]
-        public void FindUrlListTest()
+        public async void FindUrlListTest()
         {
             var downloader = fixture.serviceProvider.GetRequiredService<IDownloader>();
-            var items = downloader.FindUrlList();
+            var items = await downloader.FindUrlList();
             Assert.True(items.Count > 0);
         }
 
         [Fact]
-        public void FetchImageListTest()
+        public async void FetchImageListTest()
         {
             var downloader = fixture.serviceProvider.GetRequiredService<IDownloader>();
-            var url = downloader.FindUrl()?.url;
+            var item = await downloader.FindUrl();
+            Assert.NotNull(item);
+            var url = item.url;
             Assert.True(!string.IsNullOrEmpty(url));
 
             // NOTE:
