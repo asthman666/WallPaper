@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace BingImageAsWallPaperTest
 {
@@ -13,9 +14,11 @@ namespace BingImageAsWallPaperTest
     public class DownloaderTest : IClassFixture<BaseTest>, IDisposable
     {
         BaseTest fixture;
-        public DownloaderTest(BaseTest fixture)
+        private readonly ITestOutputHelper _testOutputHelper;
+        public DownloaderTest(BaseTest fixture, ITestOutputHelper testOutputHelper)
         {
             this.fixture = fixture;
+            _testOutputHelper = testOutputHelper;
             cleanImageFile();
         }
 
@@ -43,21 +46,29 @@ namespace BingImageAsWallPaperTest
         }
 
         [Fact]
-        public void DownloadImageTest()
+        public async void DownloadImageTest()
         {
-            var fileUtil = fixture.serviceProvider.GetRequiredService<FileUtil>();
             var downloader = fixture.serviceProvider.GetRequiredService<IDownloader>();
-            var path = downloader.Download(new BingImageAsWallPaper.Entity.ApiImageEntity { startdate = "20210602", url = "https://cn.bing.com/th?id=OHR.SocaCycles_ZH-CN3583247274_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" });
-            Assert.True(File.Exists(path.Result));
+            var path = await downloader.Download(new BingImageAsWallPaper.Entity.ApiImageEntity { startdate = "20210602", url = "https://cn.bing.com/th?id=OHR.SocaCycles_ZH-CN3583247274_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" });
+            Assert.True(File.Exists(path));
         }
 
         [Fact]
         public async void DownloadAnyFileTest()
         {
             var downloader = fixture.serviceProvider.GetRequiredService<IDownloader>();
+            var fileUtil = fixture.serviceProvider.GetRequiredService<FileUtil>();
+
             var path = await downloader.DownloadAnyOfFile();
             Assert.True(!string.IsNullOrEmpty(path));
-            Debug.WriteLine(path);
+            _testOutputHelper.WriteLine(path);
+
+            var files = Directory.GetFiles(fileUtil.ImageFolder, "*.jpg");
+            foreach (var file in files)
+            {
+                _testOutputHelper.WriteLine(file);
+            }
+
             Assert.True(File.Exists(path));
         }
 
