@@ -61,7 +61,7 @@ namespace BingImageAsWallPaperTest
 
             var path = await downloader.DownloadAnyOfFile();
             Assert.True(!string.IsNullOrEmpty(path));
-            _testOutputHelper.WriteLine(path);
+            _testOutputHelper.WriteLine("======" + path + "======");
 
             var files = Directory.GetFiles(fileUtil.ImageFolder, "*.jpg");
             foreach (var file in files)
