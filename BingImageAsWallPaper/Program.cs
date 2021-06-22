@@ -34,7 +34,7 @@ namespace BingImageAsWallPaper
             else
             {
                 var downLoader = services.GetRequiredService<IDownloader>();
-                await downLoader.DownloadAll();
+                await downLoader.DownloadAnyOfFile();
                 wallPaper.SetRandom();
             }
         }

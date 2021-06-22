@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BingImageAsWallPaper.ImageDownload
@@ -23,7 +24,7 @@ namespace BingImageAsWallPaper.ImageDownload
             _fileUtil = fileUtil;
         }
 
-        public async Task<string> Download(Entity.ApiImageEntity item)
+        public async Task<string> Download(Entity.ApiImageEntity item, CancellationToken token = default)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
@@ -36,7 +37,10 @@ namespace BingImageAsWallPaper.ImageDownload
                 return path;
 
             var uri = new Uri(item.url);
-            var imageData = await _httpClient.GetByteArrayAsync(uri);
+            //var imageData = await _httpClient.GetByteArrayAsync(uri);
+
+            var httpContent = await _httpClient.GetAsync(uri, token);
+            var imageData = await httpContent.Content.ReadAsByteArrayAsync();
             await File.WriteAllBytesAsync(path, imageData);
             return path;
         }
@@ -64,6 +68,28 @@ namespace BingImageAsWallPaper.ImageDownload
             {
                 await Download(item);
             }
+        }
+
+        // NOTE: can't confirm there is only one image will be downloaded, maybe more images will be downloaded.
+        public async Task<string> DownloadAnyOfFile()
+        {
+            var cts = new CancellationTokenSource();
+            var token = cts.Token;
+
+            var items = await FindUrlList();
+            List<Task<string>> taskList = new List<Task<string>>();
+            foreach (var item in items)
+            {
+                taskList.Add(Download(item, token));
+            }
+
+            if (taskList.Any())
+            {
+                var finished = await Task.WhenAny(taskList);
+                cts.Cancel();
+                return await finished;
+            }
+            return string.Empty;
         }
 
         public async Task<string> DownloadFirst()
