@@ -73,20 +73,20 @@ namespace BingImageAsWallPaper.ImageDownload
         // NOTE: can't confirm there is only one image will be downloaded, maybe more images will be downloaded.
         public async Task<string> DownloadAnyOfFile()
         {
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
+            //var cts = new CancellationTokenSource();
+            //var token = cts.Token;
 
             var items = await FindUrlList();
             List<Task<string>> taskList = new List<Task<string>>();
             foreach (var item in items)
             {
-                taskList.Add(Download(item, token));
+                taskList.Add(Download(item));
             }
 
             if (taskList.Any())
             {
                 var finished = await Task.WhenAny(taskList);
-                cts.Cancel();
+                //cts.Cancel();
                 return await finished;
             }
             return string.Empty;
