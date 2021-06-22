@@ -50,7 +50,7 @@ namespace BingImageAsWallPaperTest
         }
 
         [Fact]
-        public void DownloadAnyFile()
+        public void DownloadAnyFileTest()
         {
             var downloader = fixture.serviceProvider.GetRequiredService<IDownloader>();
             var path = downloader.DownloadAnyOfFile();
