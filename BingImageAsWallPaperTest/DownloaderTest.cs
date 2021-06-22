@@ -8,6 +8,7 @@ using Xunit;
 
 namespace BingImageAsWallPaperTest
 {
+    [CollectionDefinition("Non-Parallel Collection", DisableParallelization = true)]
     public class DownloaderTest : IClassFixture<BaseTest>, IDisposable
     {
         BaseTest fixture;
