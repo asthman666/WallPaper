@@ -3,6 +3,7 @@ using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Xunit;
 
@@ -51,11 +52,13 @@ namespace BingImageAsWallPaperTest
         }
 
         [Fact]
-        public void DownloadAnyFileTest()
+        public async void DownloadAnyFileTest()
         {
             var downloader = fixture.serviceProvider.GetRequiredService<IDownloader>();
-            var path = downloader.DownloadAnyOfFile();
-            Assert.True(File.Exists(path.Result));
+            var path = await downloader.DownloadAnyOfFile();
+            Assert.True(!string.IsNullOrEmpty(path));
+            Debug.WriteLine(path);
+            Assert.True(File.Exists(path));
         }
 
         private void cleanImageFile()
