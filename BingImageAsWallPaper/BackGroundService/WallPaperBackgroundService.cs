@@ -11,6 +11,8 @@ namespace BingImageAsWallPaper.BackGroundService
 {
     public class WallPaperBackgroundService : BackgroundService
     {
+        private const int DELEYTIME = 3600 * 1000; // 1 hour
+
         private readonly ILogger<WallPaperBackgroundService> _logger;
         private readonly Wallpaper _wallPaper;
 
@@ -26,7 +28,7 @@ namespace BingImageAsWallPaper.BackGroundService
             {
                 //_logger.LogInformation("running");
                 _wallPaper.SetRandom();
-                await Task.Delay(10000, stoppingToken);
+                await Task.Delay(DELEYTIME, stoppingToken);
             }
         }
     }
