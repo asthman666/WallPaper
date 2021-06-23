@@ -25,7 +25,7 @@ namespace BingImageAsWallPaper.ImageDownload
         {
             var file = new FileInfo(path);
             var skipPrefixStart = 5;
-            return file.Name.Substring(file.Name.IndexOf('-', skipPrefixStart));
+            return file.Name.Substring(file.Name.IndexOf('-', skipPrefixStart) + 1);
         }
 
         public DirectoryInfo CreateImageFolder()
