@@ -22,6 +22,12 @@ namespace BingImageAsWallPaper.BackGroundService
             _wallPaper = wallPaper;
         }
 
+        // do nothing when start
+        public override Task StartAsync(CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
+        }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
