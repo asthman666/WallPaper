@@ -21,6 +21,13 @@ namespace BingImageAsWallPaper.ImageDownload
             return queryDictionary["id"];
         }
 
+        public string GetImageNameFromPath(string path)
+        {
+            var file = new FileInfo(path);
+            var skipPrefixStart = 5;
+            return file.Name.Substring(file.Name.IndexOf('-', skipPrefixStart));
+        }
+
         public DirectoryInfo CreateImageFolder()
         {
             return Directory.CreateDirectory(imageFolder);
