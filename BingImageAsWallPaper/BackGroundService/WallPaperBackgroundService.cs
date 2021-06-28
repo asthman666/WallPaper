@@ -27,7 +27,7 @@ namespace BingImageAsWallPaper.BackGroundService
             while (!stoppingToken.IsCancellationRequested)
             {
                 await Task.Delay(DELEYTIME, stoppingToken);
-                _logger.LogInformation("set wallpaper running");                
+                _logger.LogWarning("set wallpaper running");                
                 _wallPaper.SetRandom();
             }
         }

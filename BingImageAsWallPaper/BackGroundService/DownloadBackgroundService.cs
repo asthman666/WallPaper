@@ -26,7 +26,7 @@ namespace BingImageAsWallPaper.BackGroundService
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("download wallpaper running");
+                _logger.LogWarning("download wallpaper running");
                 await _imageDownload.DownloadAll();
                 await Task.Delay(DELEYTIME, stoppingToken);
             }

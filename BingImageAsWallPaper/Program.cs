@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace BingImageAsWallPaper
 {
@@ -50,6 +51,14 @@ namespace BingImageAsWallPaper
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging =>
+                    {
+                        logging.AddEventLog(setting =>
+                        {
+                            setting.SourceName = "BingImageAsWallPaper";
+                        });
+                    }
+                )
                 .ConfigureServices((hostContext, services) =>
                 {
                     //services.Configure<FileOption>(hostContext.Configuration.GetSection("FileOption"));
@@ -62,6 +71,7 @@ namespace BingImageAsWallPaper
                     services.AddTransient<FileUtil>();
                     services.AddTransient<Wallpaper>();
                     services.AddHostedService<WallPaperBackgroundService>();
+                    services.AddHostedService<DownloadBackgroundService>();
                 });
     }
 }
