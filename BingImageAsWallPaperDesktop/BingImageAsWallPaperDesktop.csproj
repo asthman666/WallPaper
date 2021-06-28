@@ -1,9 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>wallpaper.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -17,6 +18,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BingImageAsWallPaper\BingImageAsWallPaper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="wallpaper.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
