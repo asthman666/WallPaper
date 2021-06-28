@@ -3,6 +3,7 @@ using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,10 +50,11 @@ namespace BingImageAsWallPaperDesktop
             await _downloader.DownloadAll();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        protected override void OnClosing(CancelEventArgs e)
         {
             e.Cancel = true;
             this.Visibility = Visibility.Hidden;
+            base.OnClosing(e);
         }
     }
 }

@@ -31,12 +31,18 @@ namespace BingImageAsWallPaperDesktop
             nIcon.Icon = new Icon(Path.Combine(AppContext.BaseDirectory, "wallpaper.ico"));
             nIcon.Visible = true;
             nIcon.ShowBalloonTip(3000, "WallPaper", "Set WallPaper", System.Windows.Forms.ToolTipIcon.Info);
-            nIcon.DoubleClick += nIcon_Click;
+            nIcon.DoubleClick += nIcon_DoubleClick;
+            //nIcon.Click += nIcon_Click;
         }
 
-        private void nIcon_Click(object sender, EventArgs e)
+        //private void nIcon_Click(object sender, EventArgs e)
+        //{
+        //    var wallPaper = _serviceProvider.GetService<Wallpaper>();
+        //    wallPaper.SetRandom();
+        //}
+
+        private void nIcon_DoubleClick(object sender, EventArgs e)
         {
-            //events comes here
             MainWindow.Visibility = Visibility.Visible;
             MainWindow.WindowState = WindowState.Normal;
         }
