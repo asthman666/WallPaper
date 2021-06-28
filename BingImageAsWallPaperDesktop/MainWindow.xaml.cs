@@ -1,4 +1,5 @@
 ﻿using BingImageAsWallPaper;
+using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,28 @@ namespace BingImageAsWallPaperDesktop
     {
         private readonly ILogger<MainWindow> _logger;
         private readonly Wallpaper _wallpaper;
-        public MainWindow(ILogger<MainWindow> logger, Wallpaper wallpaper)
+        private readonly IDownloader _downloader;
+        public MainWindow(ILogger<MainWindow> logger, Wallpaper wallpaper, IDownloader downloader)
         {
             InitializeComponent();
             _logger = logger;
             _wallpaper = wallpaper;
+            _downloader = downloader;
         }
 
-        private void Random_Set_WallPaper(object sender, RoutedEventArgs e)
+        private void Set_Random_Wapper(object sender, RoutedEventArgs e)
         {
             _wallpaper.SetRandom();
+        }
+
+        private void Set_Newest_Wallpaper(object sender, RoutedEventArgs e)
+        {
+            _wallpaper.SetNewest();
+        }
+
+        private async void Download_Bing_Picture(object sender, RoutedEventArgs e)
+        {
+            await _downloader.DownloadAll();
         }
     }
 }

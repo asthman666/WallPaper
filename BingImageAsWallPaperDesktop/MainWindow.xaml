@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingImageAsWallPaperDesktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="180" Width="300">
     <Grid>
-        <Button Margin="10,10,578,357" Click="Random_Set_WallPaper">Random Set WallPaper</Button>
+        <Button Margin="10,10,150,82" Click="Set_Random_Wapper">Set Random WallPaper</Button>
+        <Button Click="Set_Newest_Wallpaper" Margin="155,10,10,82">Set Newest WallPaper</Button>
+        <Button Click="Download_Bing_Picture" Margin="9,93,150,10">Download Bing Picture</Button>
     </Grid>
 </Window>
