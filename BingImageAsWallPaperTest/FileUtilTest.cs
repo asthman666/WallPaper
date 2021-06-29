@@ -48,5 +48,21 @@ namespace BingImageAsWallPaperTest
             var path = Path.Combine(fileUtil.ImageFolder, "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg");
             Assert.Equal("OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg", fileUtil.GetImageNameFromPath(path));
         }
+
+        [Fact]
+        public void GetNextImageTest()
+        {
+            var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
+            var path = Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg");
+            var nextImage = fileUtil.NextImage(path);
+            Assert.NotNull(nextImage);
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210527-OHR.ICanHearIt_EN-US7945824197_UHD.jpg"), nextImage);
+
+            path = Path.Combine(fileUtil.ImageFolder, "test.jpg");
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), fileUtil.NextImage(path));
+
+            path = Path.Combine(fileUtil.ImageFolder, "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg");
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), fileUtil.NextImage(path));
+        }
     }
 }

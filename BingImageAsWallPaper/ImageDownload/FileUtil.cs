@@ -52,6 +52,37 @@ namespace BingImageAsWallPaper.ImageDownload
             return new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.LastWriteTime).FirstOrDefault()?.FullName;
         }
 
+        public string NextImage(string currentImage)
+        {
+            var files = new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.LastWriteTime).ToArray();
+
+            var nextIndex = 0;
+            var index = 0;
+            bool found = false;
+            foreach ( var file in files)
+            {
+                if (file.FullName == currentImage)
+                {
+                    found = true;
+                    break;
+                }
+                index++;
+            }
+
+            if (found)
+            {
+                if (index == files.Length - 1)
+                {
+                    nextIndex = 0;
+                }
+                else
+                {
+                    nextIndex = index+1;
+                }
+            }
+            return files[nextIndex].FullName;
+        }
+
         public bool CheckFileExists(string fileName)
         {
             var files = Directory.GetFiles(imageFolder, "*.jpg");
