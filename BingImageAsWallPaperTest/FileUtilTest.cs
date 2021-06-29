@@ -38,7 +38,7 @@ namespace BingImageAsWallPaperTest
         public void NewsetImageTest()
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), fileUtil.NewestImage());
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg"), fileUtil.NewestImage());
         }
 
         [Fact]
@@ -53,16 +53,18 @@ namespace BingImageAsWallPaperTest
         public void GetNextImageTest()
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
-            var path = Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg");
+            var newestFile = "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg";
+
+            var path = Path.Combine(fileUtil.ImageFolder, newestFile);
             var nextImage = fileUtil.NextImage(path);
             Assert.NotNull(nextImage);
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210527-OHR.ICanHearIt_EN-US7945824197_UHD.jpg"), nextImage);
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), nextImage);
 
             path = Path.Combine(fileUtil.ImageFolder, "test.jpg");
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), fileUtil.NextImage(path));
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, newestFile), fileUtil.NextImage(path));
 
             path = Path.Combine(fileUtil.ImageFolder, "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg");
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), fileUtil.NextImage(path));
+            Assert.Equal(Path.Combine(fileUtil.ImageFolder, newestFile), fileUtil.NextImage(path));
         }
     }
 }

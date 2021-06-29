@@ -68,8 +68,8 @@ namespace BingImageAsWallPaperTest
         private void cleanImageFile()
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<FileUtil>();
-            var testFiles = new List<string> { "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg", 
-                                               "bing-20210527-OHR.ICanHearIt_EN-US7945824197_UHD.jpg", 
+            var testFiles = new List<string> { "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg",
+                                               "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg", 
                                                "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg" 
                                               };
             var files = Directory.GetFiles(fileUtil.ImageFolder, "*.jpg");
