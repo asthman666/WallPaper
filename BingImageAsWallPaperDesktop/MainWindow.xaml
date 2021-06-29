@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingImageAsWallPaperDesktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="180" Width="300" ResizeMode="CanMinimize">
+        Title="WallPaper" Height="180" Width="300" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Margin="10,10,150,82" Click="Set_Random_Wapper" Width="130" Height="80">Set Random WallPaper</Button>
-        <Button Click="Set_Newest_Wallpaper" Margin="155,10,10,82" Width="130" Height="80">Set Newest WallPaper</Button>
-        <Button Click="Download_Bing_Picture" Margin="9,93,150,10" Width="130" Height="80">Download Bing Picture</Button>
+        <Button Margin="15,10,148,82" Click="Set_Random_Wapper">Random WallPaper</Button>
+        <Button Click="Set_Newest_Wallpaper" Margin="158,10,5,82">Newest WallPaper</Button>
+        <Button Click="Download_Bing_Picture" Margin="158,93,5,10">Download Picture</Button>
     </Grid>
 </Window>

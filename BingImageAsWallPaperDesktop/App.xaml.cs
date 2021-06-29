@@ -32,6 +32,9 @@ namespace BingImageAsWallPaperDesktop
             nIcon.Visible = true;
             nIcon.ShowBalloonTip(3000, "WallPaper", "Set WallPaper", System.Windows.Forms.ToolTipIcon.Info);
             nIcon.DoubleClick += nIcon_DoubleClick;
+
+            nIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
+            nIcon.ContextMenuStrip.Items.Add("Exit", null, this.MenuExit_Click);
             //nIcon.Click += nIcon_Click;
         }
 
@@ -40,6 +43,11 @@ namespace BingImageAsWallPaperDesktop
         //    var wallPaper = _serviceProvider.GetService<Wallpaper>();
         //    wallPaper.SetRandom();
         //}
+
+        void MenuExit_Click(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
 
         private void nIcon_DoubleClick(object sender, EventArgs e)
         {
