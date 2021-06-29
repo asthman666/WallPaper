@@ -80,5 +80,11 @@ namespace BingImageAsWallPaper
         {
             return Set(_fileUtil.NewestImage(), style);
         }
+
+        public int SetNext(Style style = Style.Stretched)
+        {
+            var (imagePath, _) = GetWallPaper();
+            return Set(_fileUtil.NextImage(imagePath), style);
+        }
     }
 }

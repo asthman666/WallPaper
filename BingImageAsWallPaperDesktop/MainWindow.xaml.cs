@@ -50,6 +50,10 @@ namespace BingImageAsWallPaperDesktop
             await _downloader.DownloadAll();
         }
 
+        private void Set_Next_Wallpaper(object sender, RoutedEventArgs e)
+        {
+            _wallpaper.SetNext();
+        }
         protected override void OnClosing(CancelEventArgs e)
         {
             e.Cancel = true;
