@@ -10,6 +10,6 @@
         <Button Margin="15,10,148,82" Click="Set_Random_Wapper">Random WallPaper</Button>
         <Button Click="Set_Newest_Wallpaper" Margin="158,10,5,82">Newest WallPaper</Button>
         <Button Margin="15,93,150,10" Click="Set_Next_Wallpaper">Next WallPaper</Button>
-        <Button Click="Download_Bing_Picture" Margin="158,93,5,10">Download Picture</Button>
+        <Button x:Name="DownloadPicture" Click="Download_Bing_Picture" Margin="158,93,5,10">Download Picture</Button>
     </Grid>
 </Window>

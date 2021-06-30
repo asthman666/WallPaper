@@ -61,6 +61,25 @@ namespace BingImageAsWallPaper.ImageDownload
             return new List<Entity.ApiImageEntity>();
         }
 
+        public async Task<string[]> DownloadAllWaitDone()
+        {
+            var tasks = new List<Task<string>>();
+            var items = await FindUrlList();
+            foreach (var item in items)
+            {
+                tasks.Add(Download(item));
+            }
+
+            if (tasks.Any())
+            {
+                var finished = Task.WhenAll(tasks);
+                return await finished;
+                //return Task.WaitAll(tasks.ToArray(), TimeSpan.FromSeconds(60));
+            }
+            return new string[0];
+            //return false;
+        }
+
         public async Task DownloadAll()
         {
             var items = await FindUrlList();

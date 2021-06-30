@@ -47,7 +47,9 @@ namespace BingImageAsWallPaperDesktop
 
         private async void Download_Bing_Picture(object sender, RoutedEventArgs e)
         {
-            await _downloader.DownloadAll();
+            DownloadPicture.IsEnabled = false;
+            await _downloader.DownloadAllWaitDone();
+            DownloadPicture.IsEnabled = true;
         }
 
         private void Set_Next_Wallpaper(object sender, RoutedEventArgs e)

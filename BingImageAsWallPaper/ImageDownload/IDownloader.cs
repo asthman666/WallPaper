@@ -14,6 +14,8 @@ namespace BingImageAsWallPaper.ImageDownload
 
         public Task DownloadAll();
 
+        public Task<string[]> DownloadAllWaitDone();
+
         public Task<string> DownloadAnyOfFile();
 
         public Task<string> DownloadFirst();
