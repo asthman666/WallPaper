@@ -27,12 +27,21 @@ namespace BingImageAsWallPaperDesktop
         private readonly ILogger<MainWindow> _logger;
         private readonly Wallpaper _wallpaper;
         private readonly IDownloader _downloader;
-        public MainWindow(ILogger<MainWindow> logger, Wallpaper wallpaper, IDownloader downloader)
+        private readonly FileUtil _fileUtil;
+        public MainWindow(ILogger<MainWindow> logger, Wallpaper wallpaper, IDownloader downloader, FileUtil fileUtil)
         {
             InitializeComponent();
             _logger = logger;
             _wallpaper = wallpaper;
             _downloader = downloader;
+            _fileUtil = fileUtil;
+
+            if (_fileUtil.FileNumber() > 0)
+            {
+                NextWallpaper.IsEnabled = true;
+                NewestWallpaper.IsEnabled = true;
+                RandomWallpaper.IsEnabled = true;
+            }
         }
 
         private void Set_Random_Wapper(object sender, RoutedEventArgs e)
@@ -50,6 +59,9 @@ namespace BingImageAsWallPaperDesktop
             DownloadPicture.IsEnabled = false;
             await _downloader.DownloadAllWaitDone();
             DownloadPicture.IsEnabled = true;
+            NextWallpaper.IsEnabled = true;
+            NewestWallpaper.IsEnabled = true;
+            RandomWallpaper.IsEnabled = true;
         }
 
         private void Set_Next_Wallpaper(object sender, RoutedEventArgs e)

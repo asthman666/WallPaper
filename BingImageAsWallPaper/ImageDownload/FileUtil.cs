@@ -41,21 +41,27 @@ namespace BingImageAsWallPaper.ImageDownload
         public string ImageFolder { get { return imageFolder; } }
 
         public string RandomImage()
-        {
-            var rand = new Random();
+        {            
             var files = Directory.GetFiles(imageFolder, "*.jpg");
+            if (!files.Any())
+                throw new FileNotFoundException("You need to download wallpaper prior to set it.");
+            var rand = new Random();
             return files[rand.Next(files.Length)];
         }
 
         public string NewestImage()
         {
-            return new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.LastWriteTime).FirstOrDefault()?.FullName;
+            var files = new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.LastWriteTime);
+            if (!files.Any())
+                throw new FileNotFoundException("You need to download wallpaper prior to set it.");
+            return files.First().FullName;
         }
 
         public string NextImage(string currentImage)
         {
             var files = new DirectoryInfo(imageFolder).GetFiles("*.jpg").OrderByDescending(x => x.LastWriteTime).ToArray();
-
+            if (!files.Any())
+                throw new FileNotFoundException("You need to download wallpaper prior to set it.");
             var nextIndex = 0;
             var index = 0;
             bool found = false;
@@ -102,6 +108,11 @@ namespace BingImageAsWallPaper.ImageDownload
             }
 
             return false;
+        }
+
+        public int FileNumber()
+        {
+            return new DirectoryInfo(imageFolder).GetFiles("*.jpg").Count();
         }
 
         public void RemoveFile(string filename)
