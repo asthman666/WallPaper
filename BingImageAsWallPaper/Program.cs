@@ -63,6 +63,7 @@ namespace BingImageAsWallPaper
                 {
                     //services.Configure<FileOption>(hostContext.Configuration.GetSection("FileOption"));
                     //services.Configure<FileOption>(x => x.ImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wallpaper_test"));
+                    services.Configure<RandomSet>(hostContext.Configuration.GetSection("RandomSet"));
                     services.AddSingleton( x => 
                         new FileOption { ImagePath =  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
                     );

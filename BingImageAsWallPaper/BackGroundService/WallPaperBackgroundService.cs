@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using BingImageAsWallPaper.Option;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,20 +18,26 @@ namespace BingImageAsWallPaper.BackGroundService
 
         private readonly ILogger<WallPaperBackgroundService> _logger;
         private readonly Wallpaper _wallPaper;
+        private readonly IOptionsMonitor<RandomSet> _randomSetOptionDelegate;
 
-        public WallPaperBackgroundService(ILogger<WallPaperBackgroundService> logger, Wallpaper wallPaper)
+
+        public WallPaperBackgroundService(ILogger<WallPaperBackgroundService> logger, Wallpaper wallPaper, IOptionsMonitor<RandomSet> randomSet)
         {
             _logger = logger;
             _wallPaper = wallPaper;
+            _randomSetOptionDelegate = randomSet;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
-            {
+            {                
                 await Task.Delay(DELEYTIME, stoppingToken);
-                _logger.LogWarning("set wallpaper running");                
-                _wallPaper.SetRandom();
+                if (_randomSetOptionDelegate.CurrentValue.Active)
+                {
+                    _logger.LogWarning("set wallpaper running");
+                    _wallPaper.SetRandom();
+                }
             }
         }
     }
