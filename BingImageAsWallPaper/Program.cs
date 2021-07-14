@@ -41,11 +41,11 @@ namespace BingImageAsWallPaper
             //}
 
             var host = CreateHostBuilder(args).Build();
-            var services = host.Services;
-            var downLoader = services.GetRequiredService<IDownloader>();
-            var wallPaper = services.GetRequiredService<Wallpaper>();
-            await downLoader.DownloadAnyOfFile();
-            wallPaper.SetRandom();
+            //var services = host.Services;
+            //var downLoader = services.GetRequiredService<IDownloader>();
+            //var wallPaper = services.GetRequiredService<Wallpaper>();
+            //await downLoader.DownloadAnyOfFile();
+            //wallPaper.SetRandom();
             await host.RunAsync();
         }
 
