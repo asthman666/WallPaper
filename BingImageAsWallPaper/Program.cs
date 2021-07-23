@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using BingImageAsWallPaper.Database;
 
 namespace BingImageAsWallPaper
 {
@@ -46,11 +47,17 @@ namespace BingImageAsWallPaper
             //var wallPaper = services.GetRequiredService<Wallpaper>();
             //await downLoader.DownloadAnyOfFile();
             //wallPaper.SetRandom();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<WallPaperContext>();
+                await db.Database.EnsureCreatedAsync();
+            }
             await host.RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args)                
                 .ConfigureLogging(logging =>
                     {
                         logging.AddEventLog(setting =>
@@ -67,6 +74,9 @@ namespace BingImageAsWallPaper
                     services.AddSingleton( x => 
                         new FileOption { ImagePath =  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
                     );
+
+                    services.Configure<DatabaseOption>(hostContext.Configuration.GetSection(DatabaseOption.DatabaseSection));
+                    services.AddEntityFrameworkSqlite().AddDbContext<WallPaperContext>();
                     services.AddHttpClient();
                     services.AddTransient<IDownloader, DownloaderService>();
                     services.AddTransient<FileUtil>();
