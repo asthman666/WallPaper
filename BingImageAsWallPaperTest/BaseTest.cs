@@ -15,6 +15,9 @@ namespace BingImageAsWallPaperTest
         {
             // Do "global" initialization here; Only called once.
             serviceProvider = Program.CreateHostBuilder(new string[] { })
+                .ConfigureAppConfiguration((hostContext, _) => {
+                    hostContext.HostingEnvironment.ApplicationName = "Wallpaper-Test";
+                })
                 .ConfigureServices((hostContext, services) =>
                 {
                     //services.Configure<FileOption>(hostContext.Configuration.GetSection("FileOption"));
