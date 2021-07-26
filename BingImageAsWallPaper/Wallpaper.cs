@@ -100,8 +100,7 @@ namespace BingImageAsWallPaper
         public void LikeCurrentWallPaper()
         {
             var (path, _) = GetWallPaper();
-            var imageName = _fileUtil.GetImageNameFromPath(path);
-            _dbContext.Add(new WallPaperDbEntity { ImageName = imageName, Favorite = true });
+            _dbContext.Add(new WallPaperDbEntity { ImageName = path, Favorite = true });
             _dbContext.SaveChanges();
         }
 
@@ -111,14 +110,13 @@ namespace BingImageAsWallPaper
             var wallPapers = _dbContext.WallPaper.ToList();
             if (!wallPapers.Any())
                 throw new ArgumentException("There is no wallpapers in favorite list.");
-            return Set(_fileUtil.Image(wallPapers[rand.Next(wallPapers.Count)].ImageName), Style.Stretched);
+            return Set(wallPapers[rand.Next(wallPapers.Count)].ImageName, Style.Stretched);
         }
 
         public void RemoveCurrentWallPaper()
         {
             var (path, _) = GetWallPaper();
-            var imageName = _fileUtil.GetImageNameFromPath(path);
-            var entity = _dbContext.WallPaper.Where(x => x.ImageName == imageName).FirstOrDefault();
+            var entity = _dbContext.WallPaper.Where(x => x.ImageName == path).FirstOrDefault();
             if (entity != null)
             {
                 _dbContext.Remove(entity);

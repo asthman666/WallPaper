@@ -1,6 +1,8 @@
 ﻿using BingImageAsWallPaper;
+using BingImageAsWallPaper.Database;
 using BingImageAsWallPaper.ImageDownload;
 using BingImageAsWallPaper.Option;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -22,7 +24,7 @@ namespace BingImageAsWallPaperDesktop
     {
         private readonly ServiceProvider _serviceProvider;
         System.Windows.Forms.NotifyIcon nIcon = new System.Windows.Forms.NotifyIcon();
-
+        public IConfiguration Configuration { get; private set; }
         public App()
         {
             var serviceCollection = new ServiceCollection();
@@ -60,9 +62,16 @@ namespace BingImageAsWallPaperDesktop
             services.AddSingleton<MainWindow>();
             services.AddLogging(configure => { configure.AddDebug(); });
 
+            var builder = new ConfigurationBuilder()
+                         .SetBasePath(Directory.GetCurrentDirectory())
+                         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            Configuration = builder.Build();
+            services.Configure<DatabaseOption>(Configuration.GetSection(DatabaseOption.DatabaseSection));
+            services.AddEntityFrameworkSqlite().AddDbContext<WallPaperContext>();
             services.AddSingleton(x =>
                new FileOption { ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
             );
+
             services.AddHttpClient();
             services.AddTransient<IDownloader, DownloaderService>();
             services.AddTransient<FileUtil>();
@@ -71,6 +80,11 @@ namespace BingImageAsWallPaperDesktop
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var db = _serviceProvider.GetRequiredService<WallPaperContext>();
+                db.Database.EnsureCreated();
+            }
             var mainWindow = _serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
         }

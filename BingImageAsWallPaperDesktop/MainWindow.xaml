@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingImageAsWallPaperDesktop"
         mc:Ignorable="d"
-        Title="WallPaper" Height="180" Width="300" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
+        Title="WallPaper" Height="360" Width="300" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="RandomWallpaper" Margin="15,10,148,82" Click="Set_Random_Wapper" IsEnabled="false">Random WallPaper</Button>
-        <Button x:Name="NewestWallpaper" Click="Set_Newest_Wallpaper" Margin="158,10,5,82" IsEnabled="false">Newest WallPaper</Button>
-        <Button x:Name="NextWallpaper" Margin="15,93,150,10" Click="Set_Next_Wallpaper" IsEnabled="false">Next WallPaper</Button>
-        <Button x:Name="DownloadPicture" Click="Download_Bing_Picture" Margin="158,93,5,10">Download Picture</Button>
+        <Button x:Name="RandomWallpaper" Margin="10,10,153,254" Click="Set_Random_Wapper" IsEnabled="false" Height="70">Random WallPaper</Button>
+        <Button x:Name="NewestWallpaper" Click="Set_Newest_Wallpaper" Margin="153,10,10,254" IsEnabled="false" Height="70">Newest WallPaper</Button>
+        <Button x:Name="NextWallpaper" Margin="11,95,154,169" Click="Set_Next_Wallpaper" IsEnabled="false" Height="70">Next WallPaper</Button>
+        <Button x:Name="DownloadPicture" Click="Download_Bing_Picture" Margin="153,95,10,169" Height="70">Download Picture</Button>
+        <Separator Margin="0,5,0,0" />
+        <Button x:Name="LikeWallpaper" Margin="11,185,152,89" Click="Like_Wallpaper" Height="70">Like WallPaper</Button>
+        <Button x:Name="RemoveWallpaper" Click="Remove_Wallpaper" Margin="153,185,10,89" IsEnabled="false" Height="70">Remove WallPaper</Button>
+        <Button x:Name="SetWallpaper" Click="Set_Wallpaper" Margin="11,264,152,10" IsEnabled="false" Height="70">Set WallPaper</Button>
     </Grid>
 </Window>
