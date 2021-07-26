@@ -1,4 +1,5 @@
 ﻿using BingImageAsWallPaper;
+using BingImageAsWallPaper.Database;
 using BingImageAsWallPaper.Option;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,6 +27,12 @@ namespace BingImageAsWallPaperTest
                 }
                 )
                 .Build().Services;
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<WallPaperContext>();
+                _ = db.Database.EnsureCreated();
+            }
         }
 
         public void Dispose()

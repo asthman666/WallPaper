@@ -26,9 +26,9 @@ namespace BingImageAsWallPaper.Database
             => options.UseSqlite($"Data Source={DbPath}");
     }
 
-    [Keyless]
     public class WallPaper
     {
+        public int WallPaperId { get; set; }
         public string ImageName { get; set; }
         public bool Favorite { get; set; }
     }
