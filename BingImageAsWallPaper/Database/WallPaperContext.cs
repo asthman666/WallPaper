@@ -12,7 +12,7 @@ namespace BingImageAsWallPaper.Database
 {
     public class WallPaperContext : DbContext
     {
-        public DbSet<WallPaper> WallPaper { get; set; }
+        public DbSet<WallPaperDbEntity> WallPaper { get; set; }
 
         private readonly IOptions<DatabaseOption> _databaseOption;
 
@@ -26,9 +26,9 @@ namespace BingImageAsWallPaper.Database
             => options.UseSqlite($"Data Source={DbPath}");
     }
 
-    public class WallPaper
+    public class WallPaperDbEntity
     {
-        public int WallPaperId { get; set; }
+        public int WallPaperDbEntityId { get; set; }
         public string ImageName { get; set; }
         public bool Favorite { get; set; }
     }

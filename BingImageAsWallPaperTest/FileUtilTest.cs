@@ -38,14 +38,14 @@ namespace BingImageAsWallPaperTest
         public void NewsetImageTest()
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg"), fileUtil.NewestImage());
+            Assert.Equal(fileUtil.Image("bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg"), fileUtil.NewestImage());
         }
 
         [Fact]
         public void GetImageNameFromPathTest()
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
-            var path = Path.Combine(fileUtil.ImageFolder, "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg");
+            var path = fileUtil.Image("bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg");
             Assert.Equal("OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg", fileUtil.GetImageNameFromPath(path));
         }
 
@@ -55,16 +55,16 @@ namespace BingImageAsWallPaperTest
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
             var newestFile = "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg";
 
-            var path = Path.Combine(fileUtil.ImageFolder, newestFile);
+            var path = fileUtil.Image(newestFile);
             var nextImage = fileUtil.NextImage(path);
             Assert.NotNull(nextImage);
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), nextImage);
+            Assert.Equal(fileUtil.Image("bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg"), nextImage);
 
-            path = Path.Combine(fileUtil.ImageFolder, "test.jpg");
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, newestFile), fileUtil.NextImage(path));
+            path = fileUtil.Image("test.jpg");
+            Assert.Equal(fileUtil.Image(newestFile), fileUtil.NextImage(path));
 
-            path = Path.Combine(fileUtil.ImageFolder, "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg");
-            Assert.Equal(Path.Combine(fileUtil.ImageFolder, newestFile), fileUtil.NextImage(path));
+            path = fileUtil.Image("bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg");
+            Assert.Equal(fileUtil.Image(newestFile), fileUtil.NextImage(path));
         }
     }
 }

@@ -22,7 +22,7 @@ namespace BingImageAsWallPaperTest
         public void CRUDTest()
         {
             // CREATE
-            dbContext.Add(new WallPaper { Favorite = true, ImageName = "test" });
+            dbContext.Add(new WallPaperDbEntity { Favorite = true, ImageName = "test" });
             dbContext.SaveChanges();
             Assert.True(1 == dbContext.WallPaper.Count());
 

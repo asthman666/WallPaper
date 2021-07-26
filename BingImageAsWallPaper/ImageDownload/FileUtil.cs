@@ -38,7 +38,15 @@ namespace BingImageAsWallPaper.ImageDownload
             return new DirectoryInfo(imageFolder);
         }
 
-        public string ImageFolder { get { return imageFolder; } }
+        public string Image(string imageName)
+        {
+            return Path.Combine(imageFolder, imageName);
+        }
+
+        public string[] GetAllImageFiles()
+        {
+            return Directory.GetFiles(imageFolder, "*.jpg");
+        }
 
         public string RandomImage()
         {            

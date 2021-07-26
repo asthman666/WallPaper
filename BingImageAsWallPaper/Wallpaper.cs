@@ -1,5 +1,8 @@
-﻿using BingImageAsWallPaper.ImageDownload;
+﻿using BingImageAsWallPaper.Database;
+using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Win32;
+using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace BingImageAsWallPaper
@@ -7,10 +10,12 @@ namespace BingImageAsWallPaper
     public class Wallpaper
     {
         private readonly FileUtil _fileUtil;
+        private readonly WallPaperContext _dbContext;
 
-        public Wallpaper(FileUtil fileUtil)
+        public Wallpaper(FileUtil fileUtil, WallPaperContext dbContext)
         {
             _fileUtil = fileUtil;
+            _dbContext = dbContext;
         }
 
         const int SPI_SETDESKWALLPAPER = 20;
@@ -85,6 +90,40 @@ namespace BingImageAsWallPaper
         {
             var (imagePath, _) = GetWallPaper();
             return Set(_fileUtil.NextImage(imagePath), style);
+        }
+
+        public bool HasFavoriteWallPaperList()
+        {
+            return _dbContext.WallPaper.Any();
+        }
+
+        public void LikeCurrentWallPaper()
+        {
+            var (path, _) = GetWallPaper();
+            var imageName = _fileUtil.GetImageNameFromPath(path);
+            _dbContext.Add(new WallPaperDbEntity { ImageName = imageName, Favorite = true });
+            _dbContext.SaveChanges();
+        }
+
+        public int SetFavoriteWallPaper()
+        {
+            var rand = new Random();
+            var wallPapers = _dbContext.WallPaper.ToList();
+            if (!wallPapers.Any())
+                throw new ArgumentException("There is no wallpapers in favorite list.");
+            return Set(_fileUtil.Image(wallPapers[rand.Next(wallPapers.Count)].ImageName), Style.Stretched);
+        }
+
+        public void RemoveCurrentWallPaper()
+        {
+            var (path, _) = GetWallPaper();
+            var imageName = _fileUtil.GetImageNameFromPath(path);
+            var entity = _dbContext.WallPaper.Where(x => x.ImageName == imageName).FirstOrDefault();
+            if (entity != null)
+            {
+                _dbContext.Remove(entity);
+                _dbContext.SaveChanges();
+            }                
         }
     }
 }

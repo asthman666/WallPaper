@@ -73,7 +73,7 @@ namespace BingImageAsWallPaperTest
                                                "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg", 
                                                "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg" 
                                               };
-            var files = Directory.GetFiles(fileUtil.ImageFolder, "*.jpg");
+            var files = fileUtil.GetAllImageFiles();
             foreach ( var file in files )
             {
                 var fileInfo = new FileInfo(file);

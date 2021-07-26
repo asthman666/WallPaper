@@ -31,7 +31,8 @@ namespace BingImageAsWallPaperTest
             using (var scope = serviceProvider.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<WallPaperContext>();
-                _ = db.Database.EnsureCreated();
+                db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
             }
         }
 
