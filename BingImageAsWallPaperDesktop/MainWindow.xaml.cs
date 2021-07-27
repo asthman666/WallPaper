@@ -49,11 +49,13 @@ namespace BingImageAsWallPaperDesktop
         private void Set_Random_Wapper(object sender, RoutedEventArgs e)
         {
             _wallpaper.SetRandom();
+            FavoriteWallPaperAvailableControl();
         }
 
         private void Set_Newest_Wallpaper(object sender, RoutedEventArgs e)
         {
             _wallpaper.SetNewest();
+            FavoriteWallPaperAvailableControl();
         }
 
         private void FavoriteWallPaperAvailableControl()
@@ -67,6 +69,15 @@ namespace BingImageAsWallPaperDesktop
             {
                 RemoveWallpaper.IsEnabled = false;
                 SetWallpaper.IsEnabled = false;
+            }
+
+            if (_wallpaper.IsFavoriteWallPaper())
+            {
+                LikeWallpaper.IsEnabled = false;
+            }
+            else
+            {
+                LikeWallpaper.IsEnabled = true;
             }
         }
 
@@ -84,8 +95,9 @@ namespace BingImageAsWallPaperDesktop
 
         private void Set_Wallpaper(object sender, RoutedEventArgs e)
         {
-            _wallpaper.SetFavoriteWallPaper();
-        }        
+            _wallpaper.SetFavoriteWallPaper(); 
+            FavoriteWallPaperAvailableControl();
+        }
 
         private async void Download_Bing_Picture(object sender, RoutedEventArgs e)
         {
@@ -100,6 +112,7 @@ namespace BingImageAsWallPaperDesktop
         private void Set_Next_Wallpaper(object sender, RoutedEventArgs e)
         {
             _wallpaper.SetNext();
+            FavoriteWallPaperAvailableControl();
         }
         protected override void OnClosing(CancelEventArgs e)
         {
