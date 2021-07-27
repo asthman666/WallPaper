@@ -15,6 +15,14 @@ namespace BingImageAsWallPaperTest
         public DatabaseTest(BaseTest fixture)
         {
             dbContext = fixture.serviceProvider.GetRequiredService<WallPaperContext>();
+
+            using (var scope = fixture.serviceProvider.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<WallPaperContext>();
+                db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
+            }
+
             cleanDatabase();
         }
 
