@@ -97,9 +97,21 @@ namespace BingImageAsWallPaper
             return _dbContext.WallPaper.Any();
         }
 
+        public bool IsFavoriteWallPaper()
+        {
+            var (path, _) = GetWallPaper();
+            var entity = _dbContext.WallPaper.Where(x => x.ImageName == path).FirstOrDefault();
+            if (entity != null)
+                return true;
+            return false;
+        }
+
         public void LikeCurrentWallPaper()
         {
             var (path, _) = GetWallPaper();
+            if (_dbContext.WallPaper.Where(x => x.ImageName == path).FirstOrDefault() != null)
+                return;
+
             _dbContext.Add(new WallPaperDbEntity { ImageName = path, Favorite = true });
             _dbContext.SaveChanges();
         }

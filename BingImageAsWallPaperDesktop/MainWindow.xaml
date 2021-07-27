@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="WallPaper" Height="360" Width="300" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="RandomWallpaper" Margin="10,10,153,254" Click="Set_Random_Wapper" IsEnabled="false" Height="70">Random WallPaper</Button>
-        <Button x:Name="NewestWallpaper" Click="Set_Newest_Wallpaper" Margin="153,10,10,254" IsEnabled="false" Height="70">Newest WallPaper</Button>
-        <Button x:Name="NextWallpaper" Margin="11,95,154,169" Click="Set_Next_Wallpaper" IsEnabled="false" Height="70">Next WallPaper</Button>
-        <Button x:Name="DownloadPicture" Click="Download_Bing_Picture" Margin="153,95,10,169" Height="70">Download Picture</Button>
+        <Button x:Name="RandomWallpaper" Margin="10,10,153,254" Click="Set_Random_Wapper" IsEnabled="false">Random WallPaper</Button>
+        <Button x:Name="NewestWallpaper" Click="Set_Newest_Wallpaper" Margin="153,10,10,254" IsEnabled="false">Newest WallPaper</Button>
+        <Button x:Name="NextWallpaper" Margin="10,95,154,169" Click="Set_Next_Wallpaper" IsEnabled="false">Next WallPaper</Button>
+        <Button x:Name="DownloadPicture" Click="Download_Bing_Picture" Margin="153,95,10,169">Download Picture</Button>
         <Separator Margin="0,5,0,0" />
-        <Button x:Name="LikeWallpaper" Margin="11,185,152,89" Click="Like_Wallpaper" Height="70">Like WallPaper</Button>
-        <Button x:Name="RemoveWallpaper" Click="Remove_Wallpaper" Margin="153,185,10,89" IsEnabled="false" Height="70">Remove WallPaper</Button>
-        <Button x:Name="SetWallpaper" Click="Set_Wallpaper" Margin="11,264,152,10" IsEnabled="false" Height="70">Set WallPaper</Button>
+        <Button x:Name="LikeWallpaper" Margin="10,185,152,80" Click="Like_Wallpaper">Like WallPaper</Button>
+        <Button x:Name="RemoveWallpaper" Click="Remove_Wallpaper" Margin="153,185,10,80" IsEnabled="false">Remove WallPaper</Button>
+        <Button x:Name="SetWallpaper" Click="Set_Wallpaper" Margin="10,260,152,10" IsEnabled="false">Set WallPaper</Button>    
     </Grid>
 </Window>
