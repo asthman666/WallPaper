@@ -16,6 +16,6 @@
         <Button x:Name="RemoveWallpaper" Click="Remove_Wallpaper" Margin="153,180,10,80" IsEnabled="false" Height="58">Remove WallPaper</Button>
         <Button x:Name="SetWallpaper" Click="Set_Wallpaper" Margin="10,250,152,10" IsEnabled="false" Height="58">Set WallPaper</Button>
         <Separator Margin="0,325,0,0" />
-        <Button x:Name="OpenWallPaperFolder" Click="Set_Wallpaper" Margin="12,344,130,-76" Height="58">Open WallPaper Folder</Button>
+        <Button x:Name="OpenWallPaperFolder" Click="Open_Wallpaper_Folder" Margin="12,344,130,-76" Height="58">Open WallPaper Folder</Button>
     </Grid>
 </Window>

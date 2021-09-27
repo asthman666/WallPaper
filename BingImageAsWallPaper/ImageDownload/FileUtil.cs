@@ -1,5 +1,6 @@
 ﻿using BingImageAsWallPaper.Option;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -126,6 +127,14 @@ namespace BingImageAsWallPaper.ImageDownload
         public void RemoveFile(string filename)
         {
             File.Delete(filename);
+        }
+
+        public void OpenFileFolder()
+        {
+            if (Directory.Exists(imageFolder))
+            {
+                Process.Start("explorer.exe", imageFolder);
+            }
         }
     }
 }

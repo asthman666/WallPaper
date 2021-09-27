@@ -99,6 +99,11 @@ namespace BingImageAsWallPaperDesktop
             FavoriteWallPaperAvailableControl();
         }
 
+        private void Open_Wallpaper_Folder(object sender, RoutedEventArgs e)
+        {
+            _fileUtil.OpenFileFolder();
+        }
+
         private async void Download_Bing_Picture(object sender, RoutedEventArgs e)
         {
             DownloadPicture.IsEnabled = false;
