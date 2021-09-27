@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingImageAsWallPaperDesktop"
         mc:Ignorable="d"
-        Title="WallPaper" Height="360" Width="300" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Button x:Name="RandomWallpaper" Margin="10,8,153,254" Click="Set_Random_Wapper" IsEnabled="false" Height="58">Random WallPaper</Button>
-        <Button x:Name="NewestWallpaper" Click="Set_Newest_Wallpaper" Margin="153,8,10,254" IsEnabled="false" Height="58">Newest WallPaper</Button>
-        <Button x:Name="NextWallpaper" Margin="10,90,154,169" Click="Set_Next_Wallpaper" IsEnabled="false" Height="58">Next WallPaper</Button>
-        <Button x:Name="DownloadPicture" Click="Download_Bing_Picture" Margin="153,90,10,169" Height="58">Download Picture</Button>
-        <Separator Margin="0,5,0,0" />
+        Title="WallPaper" Height="450" Width="300" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
+    <Grid VerticalAlignment="Top">
+        <Button x:Name="RandomWallpaper" Margin="10,8,153,254" Click="Set_Random_Wapper" IsEnabled="false" Height="58" VerticalAlignment="Top">Random WallPaper</Button>
+        <Button x:Name="NewestWallpaper" Click="Set_Newest_Wallpaper" Margin="153,8,10,254" IsEnabled="false" Height="58" VerticalAlignment="Top">Newest WallPaper</Button>
+        <Button x:Name="NextWallpaper" Margin="10,90,154,169" Click="Set_Next_Wallpaper" IsEnabled="false" Height="58" VerticalAlignment="Top">Next WallPaper</Button>
+        <Button x:Name="DownloadPicture" Click="Download_Bing_Picture" Margin="153,90,10,169" Height="58" VerticalAlignment="Top">Download Picture</Button>
+        <Separator VerticalAlignment="Center" />
         <Button x:Name="LikeWallpaper" Margin="10,180,152,80" Click="Like_Wallpaper" Height="58">Like WallPaper</Button>
         <Button x:Name="RemoveWallpaper" Click="Remove_Wallpaper" Margin="153,180,10,80" IsEnabled="false" Height="58">Remove WallPaper</Button>
-        <Button x:Name="SetWallpaper" Click="Set_Wallpaper" Margin="10,250,152,10" IsEnabled="false" Height="58">Set WallPaper</Button>    
+        <Button x:Name="SetWallpaper" Click="Set_Wallpaper" Margin="10,250,152,10" IsEnabled="false" Height="58">Set WallPaper</Button>
+        <Separator Margin="0,325,0,0" />
+        <Button x:Name="OpenWallPaperFolder" Click="Set_Wallpaper" Margin="12,344,130,-76" Height="58">Open WallPaper Folder</Button>
     </Grid>
 </Window>
