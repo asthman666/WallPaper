@@ -1,12 +1,7 @@
 ﻿using BingImageAsWallPaper.Option;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -31,7 +26,7 @@ namespace BingImageAsWallPaper.BackGroundService
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
-            {                
+            {
                 await Task.Delay(DELEYTIME, stoppingToken);
                 if (_randomSetOptionDelegate.CurrentValue.Active)
                 {

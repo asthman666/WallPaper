@@ -1,7 +1,6 @@
-using BingImageAsWallPaper.Entity;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
+using WallPaper.Core.Entities;
 using Xunit;
 
 namespace WallPaper.Infrastructure.Tests

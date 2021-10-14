@@ -1,6 +1,6 @@
-﻿using Module = Autofac.Module;
-using Autofac;
+﻿using Autofac;
 using WallPaper.Core.Interfaces;
+using Module = Autofac.Module;
 
 namespace WallPaper.Infrastructure
 {

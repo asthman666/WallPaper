@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WallPaper.Core.Entities
+﻿namespace WallPaper.Core.Entities
 {
     public abstract class BaseEntity
     {

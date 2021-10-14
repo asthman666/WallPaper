@@ -1,6 +1,4 @@
-﻿using BingImageAsWallPaper;
-using Microsoft.Extensions.DependencyInjection;
-using System.IO;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace BingImageAsWallPaperTest
@@ -14,7 +12,7 @@ namespace BingImageAsWallPaperTest
         }
         [Fact]
         public void GetIdFromStringTest()
-        {            
+        {
             var fileUtil = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.ImageDownload.FileUtil>();
             var urlString = "https://cn.bing.com/th?id=OHR.SocaCycles_ZH-CN3583247274_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4";
             Assert.Equal("OHR.SocaCycles_ZH-CN3583247274_UHD.jpg", fileUtil.GetImageName(urlString));

@@ -1,9 +1,7 @@
 ﻿using BingImageAsWallPaper;
-using BingImageAsWallPaper.Database;
 using BingImageAsWallPaper.Option;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Configuration;
 using System.IO;
 
 namespace BingImageAsWallPaperTest
@@ -16,7 +14,8 @@ namespace BingImageAsWallPaperTest
         {
             // Do "global" initialization here; Only called once.
             serviceProvider = Program.CreateHostBuilder(new string[] { })
-                .ConfigureAppConfiguration((hostContext, _) => {
+                .ConfigureAppConfiguration((hostContext, _) =>
+                {
                     hostContext.HostingEnvironment.ApplicationName = "Wallpaper-Test";
                 })
                 .ConfigureServices((hostContext, services) =>

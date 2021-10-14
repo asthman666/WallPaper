@@ -1,13 +1,13 @@
 ﻿using BingImageAsWallPaper.BackGroundService;
+using BingImageAsWallPaper.Database;
 using BingImageAsWallPaper.ImageDownload;
 using BingImageAsWallPaper.Option;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using BingImageAsWallPaper.Database;
 
 namespace BingImageAsWallPaper
 {
@@ -57,7 +57,7 @@ namespace BingImageAsWallPaper
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)                
+            Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(logging =>
                     {
                         logging.AddEventLog(setting =>
@@ -71,8 +71,8 @@ namespace BingImageAsWallPaper
                     //services.Configure<FileOption>(hostContext.Configuration.GetSection("FileOption"));
                     //services.Configure<FileOption>(x => x.ImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wallpaper_test"));
                     services.Configure<RandomSet>(hostContext.Configuration.GetSection("RandomSet"));
-                    services.AddSingleton( x => 
-                        new FileOption { ImagePath =  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
+                    services.AddSingleton(x =>
+                       new FileOption { ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
                     );
 
                     services.Configure<DatabaseOption>(hostContext.Configuration.GetSection(DatabaseOption.DatabaseSection));

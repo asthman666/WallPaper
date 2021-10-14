@@ -1,9 +1,7 @@
-using BingImageAsWallPaper;
 using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using Xunit;
 using Xunit.Abstractions;
@@ -70,11 +68,11 @@ namespace BingImageAsWallPaperTest
         {
             var fileUtil = fixture.serviceProvider.GetRequiredService<FileUtil>();
             var testFiles = new List<string> { "bing-20210616-OHR.BrightEye_ZH-CN6196887876_UHD.jpg",
-                                               "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg", 
-                                               "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg" 
+                                               "bing-20210628-OHR.RocksSeychelles_ZH-CN0105602892_UHD.jpg",
+                                               "bing-20210528-OHR.CowbirdsEgg_EN-US8103879720_UHD.jpg"
                                               };
             var files = fileUtil.GetAllImageFiles();
-            foreach ( var file in files )
+            foreach (var file in files)
             {
                 var fileInfo = new FileInfo(file);
                 if (!testFiles.Contains(fileInfo.Name))

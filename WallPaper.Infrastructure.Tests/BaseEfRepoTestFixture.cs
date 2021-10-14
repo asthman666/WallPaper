@@ -1,13 +1,9 @@
-﻿using BingImageAsWallPaper.Entity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace WallPaper.Infrastructure.Tests
 {
-    public class BaseEfRepoTestFixture 
+    public class BaseEfRepoTestFixture
     {
         protected AppDbContext _dbContext;
 

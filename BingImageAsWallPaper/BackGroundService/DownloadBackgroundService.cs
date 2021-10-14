@@ -1,11 +1,8 @@
-﻿using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BingImageAsWallPaper.ImageDownload;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
-using BingImageAsWallPaper.ImageDownload;
-using Microsoft.Extensions.Logging;
 
 namespace BingImageAsWallPaper.BackGroundService
 {

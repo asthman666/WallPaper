@@ -50,7 +50,7 @@ namespace BingImageAsWallPaper.ImageDownload
         }
 
         public string RandomImage()
-        {            
+        {
             var files = Directory.GetFiles(imageFolder, "*.jpg");
             if (!files.Any())
                 throw new FileNotFoundException("You need to download wallpaper prior to set it.");
@@ -74,7 +74,7 @@ namespace BingImageAsWallPaper.ImageDownload
             var nextIndex = 0;
             var index = 0;
             bool found = false;
-            foreach ( var file in files)
+            foreach (var file in files)
             {
                 if (file.FullName == currentImage)
                 {
@@ -92,7 +92,7 @@ namespace BingImageAsWallPaper.ImageDownload
                 }
                 else
                 {
-                    nextIndex = index+1;
+                    nextIndex = index + 1;
                 }
             }
             return files[nextIndex].FullName;

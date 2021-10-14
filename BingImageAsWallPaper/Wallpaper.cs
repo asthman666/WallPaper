@@ -133,7 +133,7 @@ namespace BingImageAsWallPaper
             {
                 _dbContext.Remove(entity);
                 _dbContext.SaveChanges();
-            }                
+            }
         }
     }
 }
