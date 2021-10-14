@@ -10,14 +10,13 @@ namespace BingImageAsWallPaper.Database
     {
         public DbSet<WallPaperDbEntity> WallPaper { get; set; }
 
-        private readonly IOptions<DatabaseOption> _databaseOption;
+        private readonly string DbPath;
 
         public WallPaperContext(IOptions<DatabaseOption> databaseOption, FileOption fileOption)
         {
-            _databaseOption = databaseOption;
-            DbPath = Path.Combine(fileOption.ImagePath, _databaseOption.Value.DatabaseName);
+            DbPath = Path.Combine(fileOption.ImagePath, databaseOption.Value.DatabaseName);
         }
-        public string DbPath { get; private set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite($"Data Source={DbPath}");
     }
