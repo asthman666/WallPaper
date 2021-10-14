@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.IO;
+using WallPaper.Core.Entities;
 
 namespace BingImageAsWallPaper.Database
 {
@@ -21,10 +22,4 @@ namespace BingImageAsWallPaper.Database
             => options.UseSqlite($"Data Source={DbPath}");
     }
 
-    public class WallPaperDbEntity
-    {
-        public int WallPaperDbEntityId { get; set; }
-        public string ImageName { get; set; }
-        public bool Favorite { get; set; }
-    }
 }

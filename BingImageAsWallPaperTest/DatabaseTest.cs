@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using WallPaper.Core.Entities;
 using Xunit;
 
 namespace BingImageAsWallPaperTest
