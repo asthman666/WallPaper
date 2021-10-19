@@ -1,5 +1,4 @@
-﻿using BingImageAsWallPaper.Database;
-using BingImageAsWallPaper.ImageDownload;
+﻿using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Win32;
 using System;
 using System.Linq;

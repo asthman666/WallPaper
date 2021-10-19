@@ -1,7 +1,5 @@
 ﻿using BingImageAsWallPaper;
-using BingImageAsWallPaper.Database;
 using BingImageAsWallPaper.ImageDownload;
-using BingImageAsWallPaper.Option;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

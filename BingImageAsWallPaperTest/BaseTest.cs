@@ -1,8 +1,8 @@
 ﻿using BingImageAsWallPaper;
-using BingImageAsWallPaper.Option;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
+using WallPaper.Infrastructure.AppDbConnectionOption;
 
 namespace BingImageAsWallPaperTest
 {
