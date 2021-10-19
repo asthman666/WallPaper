@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BingImageAsWallPaper\BingImageAsWallPaper.csproj" />
+    <ProjectReference Include="..\WallPaper.Infrastructure\WallPaper.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,6 +9,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows;
+using WallPaper.Infrastructure;
 
 namespace BingImageAsWallPaperDesktop
 {
@@ -61,12 +62,12 @@ namespace BingImageAsWallPaperDesktop
                          .SetBasePath(Directory.GetCurrentDirectory())
                          .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
             Configuration = builder.Build();
-            services.Configure<DatabaseOption>(Configuration.GetSection(DatabaseOption.DatabaseSection));
-            services.AddEntityFrameworkSqlite().AddDbContext<WallPaperContext>();
-            services.AddSingleton(x =>
-               new FileOption { ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
-            );
-
+            //services.Configure<DatabaseOption>(Configuration.GetSection(DatabaseOption.DatabaseSection));
+            //services.AddEntityFrameworkSqlite().AddDbContext<WallPaperContext>();
+            //services.AddSingleton(x =>
+            //   new FileOption { ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "bingwallpaper") }
+            //);
+            services.AddDbContext(Configuration, Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
             services.AddHttpClient();
             services.AddTransient<IDownloader, DownloaderService>();
             services.AddTransient<FileUtil>();
@@ -77,7 +78,7 @@ namespace BingImageAsWallPaperDesktop
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var db = _serviceProvider.GetRequiredService<WallPaperContext>();
+                var db = _serviceProvider.GetRequiredService<AppDbContext>();
                 db.Database.EnsureCreated();
             }
             var mainWindow = _serviceProvider.GetService<MainWindow>();

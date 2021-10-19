@@ -1,9 +1,9 @@
-﻿using BingImageAsWallPaper.Option;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
+using WallPaper.Infrastructure.AppDbConnectionOption;
 
 namespace BingImageAsWallPaper.ImageDownload
 {

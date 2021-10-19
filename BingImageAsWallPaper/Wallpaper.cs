@@ -5,15 +5,16 @@ using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using WallPaper.Core.Entities;
+using WallPaper.Infrastructure;
 
 namespace BingImageAsWallPaper
 {
     public class Wallpaper
     {
         private readonly FileUtil _fileUtil;
-        private readonly WallPaperContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public Wallpaper(FileUtil fileUtil, WallPaperContext dbContext)
+        public Wallpaper(FileUtil fileUtil, AppDbContext dbContext)
         {
             _fileUtil = fileUtil;
             _dbContext = dbContext;
