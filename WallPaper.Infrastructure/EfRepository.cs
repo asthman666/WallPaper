@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using WallPaper.Core.Entities;
 using WallPaper.Core.Interfaces;
@@ -19,6 +21,10 @@ namespace WallPaper.Infrastructure
         public T GetById<T>(int id) where T : BaseEntity
         {
             return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
+        }
+        public Task<T> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity
+        {
+            return _dbContext.Set<T>().FirstOrDefaultAsync(predicate);
         }
 
         public Task<T> GetByIdAsync<T>(int id) where T : BaseEntity

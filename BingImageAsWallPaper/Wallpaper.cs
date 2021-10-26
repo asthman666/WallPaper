@@ -114,8 +114,8 @@ namespace BingImageAsWallPaper
         public async Task LikeCurrentWallPaper()
         {
             var (path, _) = GetWallPaper();
-            var entities = await _repository.ListAsync<WallPaperDbEntity>();
-            if (entities.Where(x => x.ImageName == path).FirstOrDefault() != null)
+            var entity = await _repository.FirstOrDefaultAsync<WallPaperDbEntity>(x => x.ImageName == path);
+            if (entity != null)
                 return;
 
             await _repository.AddAsync(new WallPaperDbEntity { ImageName = path, Favorite = true });
