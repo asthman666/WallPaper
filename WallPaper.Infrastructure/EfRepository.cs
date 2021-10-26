@@ -22,6 +22,12 @@ namespace WallPaper.Infrastructure
         {
             return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
         }
+
+        public bool Any<T>() where T : BaseEntity
+        {
+            return _dbContext.Set<T>().Any();
+        }
+
         public Task<T> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity
         {
             return _dbContext.Set<T>().FirstOrDefaultAsync(predicate);

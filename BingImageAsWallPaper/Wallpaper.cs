@@ -99,7 +99,7 @@ namespace BingImageAsWallPaper
 
         public bool HasFavoriteWallPaperList()
         {
-            return _dbContext.WallPaper.Any();
+            return _repository.Any<WallPaperDbEntity>();
         }
 
         public bool IsFavoriteWallPaper()
