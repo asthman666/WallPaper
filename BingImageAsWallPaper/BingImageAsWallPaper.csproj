@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WallPaper.Core.Wallpaper\WallPaper.Core.Wallpaper.csproj" />
-    <ProjectReference Include="..\WallPaper.Core\WallPaper.Core.csproj" />
     <ProjectReference Include="..\WallPaper.Core.Download\WallPaper.Core.Download.csproj" />
     <ProjectReference Include="..\WallPaper.Infrastructure\WallPaper.Infrastructure.csproj" />
   </ItemGroup>
