@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using WallPaper.Core.Wallpaper;
 using Xunit;
 
 namespace BingImageAsWallPaperTest
@@ -14,7 +15,7 @@ namespace BingImageAsWallPaperTest
         [Fact]
         public void SetBackGroundTest()
         {
-            var wallPaper = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.Wallpaper>();
+            var wallPaper = fixture.serviceProvider.GetRequiredService<WallpaperService>();
             var (wallPaperFile, style) = wallPaper.GetWallPaper(); // get original wallpaper
 
             var result = wallPaper.SetNewest();
@@ -26,7 +27,7 @@ namespace BingImageAsWallPaperTest
         [Fact]
         public void GetWallPaperTest()
         {
-            var wallPaper = fixture.serviceProvider.GetRequiredService<BingImageAsWallPaper.Wallpaper>();
+            var wallPaper = fixture.serviceProvider.GetRequiredService<WallpaperService>();
             var (wallPaperFile, _) = wallPaper.GetWallPaper();
             Assert.NotNull(wallPaperFile);
             Assert.True(wallPaperFile.Length > 0);

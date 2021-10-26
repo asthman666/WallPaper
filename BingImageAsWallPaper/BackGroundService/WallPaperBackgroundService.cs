@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Threading;
 using System.Threading.Tasks;
+using WallPaper.Core.Wallpaper;
 
 namespace BingImageAsWallPaper.BackGroundService
 {
@@ -12,11 +13,11 @@ namespace BingImageAsWallPaper.BackGroundService
         private const int DELEYTIME = 3600 * 1000; // 1 hour
 
         private readonly ILogger<WallPaperBackgroundService> _logger;
-        private readonly Wallpaper _wallPaper;
+        private readonly WallpaperService _wallPaper;
         private readonly IOptionsMonitor<RandomSet> _randomSetOptionDelegate;
 
 
-        public WallPaperBackgroundService(ILogger<WallPaperBackgroundService> logger, Wallpaper wallPaper, IOptionsMonitor<RandomSet> randomSet)
+        public WallPaperBackgroundService(ILogger<WallPaperBackgroundService> logger, WallpaperService wallPaper, IOptionsMonitor<RandomSet> randomSet)
         {
             _logger = logger;
             _wallPaper = wallPaper;

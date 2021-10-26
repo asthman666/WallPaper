@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.Download.Core", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.SharedKernel", "WallPaper.SharedKernel\WallPaper.SharedKernel.csproj", "{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.Core.Wallpaper", "WallPaper.Core.Wallpaper\WallPaper.Core.Wallpaper.csproj", "{BDAA2ADE-6445-494A-B307-D48E347A58B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDAA2ADE-6445-494A-B307-D48E347A58B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDAA2ADE-6445-494A-B307-D48E347A58B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDAA2ADE-6445-494A-B307-D48E347A58B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDAA2ADE-6445-494A-B307-D48E347A58B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

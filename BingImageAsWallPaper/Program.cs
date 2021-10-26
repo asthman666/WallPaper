@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WallPaper.Infrastructure;
 using WallPaper.Download.Core;
 using WallPaper.SharedKernel;
+using WallPaper.Core.Wallpaper;
 
 namespace BingImageAsWallPaper
 {
@@ -83,7 +84,7 @@ namespace BingImageAsWallPaper
                     services.AddHttpClient();
                     services.AddTransient<IDownloader, DownloaderService>();
                     services.AddTransient<FileUtil>();
-                    services.AddTransient<Wallpaper>();
+                    services.AddTransient<WallpaperService>();
                     services.AddHostedService<WallPaperBackgroundService>();
                     services.AddHostedService<DownloadBackgroundService>();
                 });

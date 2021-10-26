@@ -1,8 +1,9 @@
-﻿using BingImageAsWallPaper;
-using BingImageAsWallPaper.ImageDownload;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using System.Windows;
+using WallPaper.Core.Wallpaper;
+using WallPaper.Download.Core;
+using WallPaper.SharedKernel;
 
 namespace BingImageAsWallPaperDesktop
 {
@@ -12,10 +13,10 @@ namespace BingImageAsWallPaperDesktop
     public partial class MainWindow : Window
     {
         private readonly ILogger<MainWindow> _logger;
-        private readonly Wallpaper _wallpaper;
+        private readonly WallpaperService _wallpaper;
         private readonly IDownloader _downloader;
         private readonly FileUtil _fileUtil;
-        public MainWindow(ILogger<MainWindow> logger, Wallpaper wallpaper, IDownloader downloader, FileUtil fileUtil)
+        public MainWindow(ILogger<MainWindow> logger, WallpaperService wallpaper, IDownloader downloader, FileUtil fileUtil)
         {
             InitializeComponent();
             _logger = logger;

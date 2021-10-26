@@ -5,17 +5,16 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using WallPaper.Core.Entities;
 using WallPaper.Core.Interfaces;
-using WallPaper.Infrastructure;
 using WallPaper.SharedKernel;
 
-namespace BingImageAsWallPaper
+namespace WallPaper.Core.Wallpaper
 {
-    public class Wallpaper
+    public class WallpaperService
     {
         private readonly FileUtil _fileUtil;
         private readonly IRepository _repository;
 
-        public Wallpaper(FileUtil fileUtil, IRepository repository)
+        public WallpaperService(FileUtil fileUtil, IRepository repository)
         {
             _fileUtil = fileUtil;
             _repository = repository;
@@ -134,4 +133,5 @@ namespace BingImageAsWallPaper
             }
         }
     }
+
 }

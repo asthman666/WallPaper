@@ -1,5 +1,4 @@
 ﻿using BingImageAsWallPaper;
-using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -7,7 +6,10 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows;
+using WallPaper.Core.Wallpaper;
+using WallPaper.Download.Core;
 using WallPaper.Infrastructure;
+using WallPaper.SharedKernel;
 
 namespace BingImageAsWallPaperDesktop
 {
@@ -69,7 +71,7 @@ namespace BingImageAsWallPaperDesktop
             services.AddHttpClient();
             services.AddTransient<IDownloader, DownloaderService>();
             services.AddTransient<FileUtil>();
-            services.AddTransient<Wallpaper>();
+            services.AddTransient<WallpaperService>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
