@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>WallPaper.Core.Download</AssemblyName>
+    <RootNamespace>WallPaper.Core.Download</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

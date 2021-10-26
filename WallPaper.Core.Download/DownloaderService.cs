@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WallPaper.SharedKernel;
 
-namespace WallPaper.Download.Core
+namespace WallPaper.Core.Download
 {
     public class DownloaderService : IDownloader
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WallPaper.Download.Core.Entity
+namespace WallPaper.Core.Download.Entity
 {
     public class ApiImageEntity
     {

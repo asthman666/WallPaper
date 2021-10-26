@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using WallPaper.Infrastructure;
-using WallPaper.Download.Core;
+using WallPaper.Core.Download;
 using WallPaper.SharedKernel;
 using WallPaper.Core.Wallpaper;
 

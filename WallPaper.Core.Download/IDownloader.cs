@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WallPaper.Download.Core
+namespace WallPaper.Core.Download
 {
     public interface IDownloader
     {

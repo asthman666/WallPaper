@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
-using WallPaper.Download.Core;
+using WallPaper.Core.Download;
 
 namespace BingImageAsWallPaper.BackGroundService
 {
