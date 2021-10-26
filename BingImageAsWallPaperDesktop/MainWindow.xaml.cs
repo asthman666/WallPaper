@@ -68,9 +68,9 @@ namespace BingImageAsWallPaperDesktop
             }
         }
 
-        private void Remove_Wallpaper(object sender, RoutedEventArgs e)
+        private async void Remove_Wallpaper(object sender, RoutedEventArgs e)
         {
-            _wallpaper.RemoveCurrentWallPaper();
+            await _wallpaper.RemoveCurrentWallPaper();
             FavoriteWallPaperAvailableControl();
         }
 

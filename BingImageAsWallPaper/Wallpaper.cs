@@ -117,7 +117,6 @@ namespace BingImageAsWallPaper
             var entity = await _repository.FirstOrDefaultAsync<WallPaperDbEntity>(x => x.ImageName == path);
             if (entity != null)
                 return;
-
             await _repository.AddAsync(new WallPaperDbEntity { ImageName = path, Favorite = true });
         }
 
@@ -130,14 +129,13 @@ namespace BingImageAsWallPaper
             return Set(wallPapers[rand.Next(wallPapers.Count)].ImageName, Style.Stretched);
         }
 
-        public void RemoveCurrentWallPaper()
+        public async Task RemoveCurrentWallPaper()
         {
             var (path, _) = GetWallPaper();
-            var entity = _dbContext.WallPaper.Where(x => x.ImageName == path).FirstOrDefault();
+            var entity = await _repository.FirstOrDefaultAsync<WallPaperDbEntity>(x => x.ImageName == path);
             if (entity != null)
             {
-                _dbContext.Remove(entity);
-                _dbContext.SaveChanges();
+                await _repository.DeleteAsync(entity);
             }
         }
     }
