@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using System.IO;
 using WallPaper.Core.Interfaces;
 using WallPaper.Infrastructure.AppDbConnectionOption;
+using WallPaper.SharedKernel;
 
 namespace WallPaper.Infrastructure
 {

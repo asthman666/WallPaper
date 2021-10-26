@@ -1,4 +1,10 @@
-﻿namespace BingImageAsWallPaper.Entity
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WallPaper.Download.Core.Entity
 {
     public class ApiImageEntity
     {

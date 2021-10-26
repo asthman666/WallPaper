@@ -1,8 +1,10 @@
-using BingImageAsWallPaper.ImageDownload;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using WallPaper.Download.Core;
+using WallPaper.Download.Core.Entity;
+using WallPaper.SharedKernel;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -47,7 +49,7 @@ namespace BingImageAsWallPaperTest
         public async void DownloadImageTest()
         {
             var downloader = fixture.serviceProvider.GetRequiredService<IDownloader>();
-            var path = await downloader.Download(new BingImageAsWallPaper.Entity.ApiImageEntity { startdate = "20210602", url = "https://cn.bing.com/th?id=OHR.SocaCycles_ZH-CN3583247274_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" });
+            var path = await downloader.Download(new ApiImageEntity { startdate = "20210602", url = "https://cn.bing.com/th?id=OHR.SocaCycles_ZH-CN3583247274_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" });
             Assert.True(File.Exists(path));
         }
 

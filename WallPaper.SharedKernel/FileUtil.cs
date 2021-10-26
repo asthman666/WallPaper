@@ -3,9 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
-using WallPaper.Infrastructure.AppDbConnectionOption;
 
-namespace BingImageAsWallPaper.ImageDownload
+namespace WallPaper.SharedKernel
 {
     public class FileUtil
     {

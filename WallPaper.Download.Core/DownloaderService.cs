@@ -7,8 +7,9 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using WallPaper.SharedKernel;
 
-namespace BingImageAsWallPaper.ImageDownload
+namespace WallPaper.Download.Core
 {
     public class DownloaderService : IDownloader
     {
@@ -123,4 +124,5 @@ namespace BingImageAsWallPaper.ImageDownload
             return urls.FirstOrDefault();
         }
     }
+
 }

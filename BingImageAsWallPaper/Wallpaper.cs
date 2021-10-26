@@ -1,5 +1,4 @@
-﻿using BingImageAsWallPaper.ImageDownload;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -7,6 +6,7 @@ using System.Threading.Tasks;
 using WallPaper.Core.Entities;
 using WallPaper.Core.Interfaces;
 using WallPaper.Infrastructure;
+using WallPaper.SharedKernel;
 
 namespace BingImageAsWallPaper
 {

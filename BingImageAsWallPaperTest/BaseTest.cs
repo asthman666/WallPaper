@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
-using WallPaper.Infrastructure.AppDbConnectionOption;
+using WallPaper.SharedKernel;
 
 namespace BingImageAsWallPaperTest
 {

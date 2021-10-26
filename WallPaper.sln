@@ -14,11 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingImageAsWallPaperDesktop", "BingImageAsWallPaperDesktop\BingImageAsWallPaperDesktop.csproj", "{C7E2CFD0-874E-4D4C-97B1-F611F466183C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.Infrastructure", "WallPaper.Infrastructure\WallPaper.Infrastructure.csproj", "{FD4F5EAF-1FD2-4B79-B13B-902254FB9777}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WallPaper.Infrastructure", "WallPaper.Infrastructure\WallPaper.Infrastructure.csproj", "{FD4F5EAF-1FD2-4B79-B13B-902254FB9777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.Infrastructure.Tests", "WallPaper.Infrastructure.Tests\WallPaper.Infrastructure.Tests.csproj", "{E012696E-C191-4B0F-A76F-70E908704A96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WallPaper.Infrastructure.Tests", "WallPaper.Infrastructure.Tests\WallPaper.Infrastructure.Tests.csproj", "{E012696E-C191-4B0F-A76F-70E908704A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.Core", "WallPaper.Core\WallPaper.Core.csproj", "{DA73034F-52E2-44C9-BC17-44EF7A5C7C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WallPaper.Core", "WallPaper.Core\WallPaper.Core.csproj", "{DA73034F-52E2-44C9-BC17-44EF7A5C7C0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.Download.Core", "WallPaper.Download.Core\WallPaper.Download.Core.csproj", "{953B80FD-6F07-4F40-8A3F-F20EA8DEBC30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.SharedKernel", "WallPaper.SharedKernel\WallPaper.SharedKernel.csproj", "{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,14 @@ Global
 		{DA73034F-52E2-44C9-BC17-44EF7A5C7C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA73034F-52E2-44C9-BC17-44EF7A5C7C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA73034F-52E2-44C9-BC17-44EF7A5C7C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{953B80FD-6F07-4F40-8A3F-F20EA8DEBC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953B80FD-6F07-4F40-8A3F-F20EA8DEBC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953B80FD-6F07-4F40-8A3F-F20EA8DEBC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953B80FD-6F07-4F40-8A3F-F20EA8DEBC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A4C3E6-04C7-4195-96C6-C75FDABE0F07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

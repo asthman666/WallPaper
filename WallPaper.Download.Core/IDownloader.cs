@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BingImageAsWallPaper.ImageDownload
+namespace WallPaper.Download.Core
 {
     public interface IDownloader
     {
