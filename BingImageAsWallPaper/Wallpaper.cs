@@ -15,7 +15,7 @@ namespace BingImageAsWallPaper
         private readonly FileUtil _fileUtil;
         private readonly IRepository _repository;
 
-        public Wallpaper(FileUtil fileUtil, AppDbContext dbContext, IRepository repository)
+        public Wallpaper(FileUtil fileUtil, IRepository repository)
         {
             _fileUtil = fileUtil;
             _repository = repository;
