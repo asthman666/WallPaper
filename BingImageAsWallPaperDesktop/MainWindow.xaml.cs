@@ -80,9 +80,9 @@ namespace BingImageAsWallPaperDesktop
             FavoriteWallPaperAvailableControl();
         }
 
-        private void Set_Wallpaper(object sender, RoutedEventArgs e)
+        private async void Set_Wallpaper(object sender, RoutedEventArgs e)
         {
-            _wallpaper.SetFavoriteWallPaper();
+            await _wallpaper.SetFavoriteWallPaper();
             FavoriteWallPaperAvailableControl();
         }
 

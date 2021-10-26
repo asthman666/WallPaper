@@ -120,10 +120,10 @@ namespace BingImageAsWallPaper
             await _repository.AddAsync(new WallPaperDbEntity { ImageName = path, Favorite = true });
         }
 
-        public int SetFavoriteWallPaper()
+        public async Task<int> SetFavoriteWallPaper()
         {
             var rand = new Random();
-            var wallPapers = _dbContext.WallPaper.ToList();
+            var wallPapers = await _repository.ListAsync<WallPaperDbEntity>();
             if (!wallPapers.Any())
                 throw new ArgumentException("There is no wallpapers in favorite list.");
             return Set(wallPapers[rand.Next(wallPapers.Count)].ImageName, Style.Stretched);
