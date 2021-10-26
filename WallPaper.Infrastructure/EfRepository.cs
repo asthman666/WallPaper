@@ -28,6 +28,11 @@ namespace WallPaper.Infrastructure
             return _dbContext.Set<T>().Any();
         }
 
+        public bool Any<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity
+        {
+            return _dbContext.Set<T>().Any(predicate);
+        }
+
         public Task<T> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity
         {
             return _dbContext.Set<T>().FirstOrDefaultAsync(predicate);

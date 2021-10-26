@@ -13,13 +13,11 @@ namespace BingImageAsWallPaper
     public class Wallpaper
     {
         private readonly FileUtil _fileUtil;
-        private readonly AppDbContext _dbContext;
         private readonly IRepository _repository;
 
         public Wallpaper(FileUtil fileUtil, AppDbContext dbContext, IRepository repository)
         {
             _fileUtil = fileUtil;
-            _dbContext = dbContext;
             _repository = repository;
         }
 
@@ -105,10 +103,7 @@ namespace BingImageAsWallPaper
         public bool IsFavoriteWallPaper()
         {
             var (path, _) = GetWallPaper();
-            var entity = _dbContext.WallPaper.Where(x => x.ImageName == path).FirstOrDefault();
-            if (entity != null)
-                return true;
-            return false;
+            return _repository.Any<WallPaperDbEntity>(x => x.ImageName == path);
         }
 
         public async Task LikeCurrentWallPaper()

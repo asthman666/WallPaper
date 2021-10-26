@@ -9,7 +9,7 @@ namespace WallPaper.Core.Interfaces
     public interface IRepository
     {
         bool Any<T>() where T : BaseEntity;
-
+        bool Any<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity;
 
         Task<T> GetByIdAsync<T>(int id) where T : BaseEntity;
         Task<T> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity;
