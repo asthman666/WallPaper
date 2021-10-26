@@ -74,9 +74,9 @@ namespace BingImageAsWallPaperDesktop
             FavoriteWallPaperAvailableControl();
         }
 
-        private void Like_Wallpaper(object sender, RoutedEventArgs e)
+        private async void Like_Wallpaper(object sender, RoutedEventArgs e)
         {
-            _wallpaper.LikeCurrentWallPaper();
+            await _wallpaper.LikeCurrentWallPaper();
             FavoriteWallPaperAvailableControl();
         }
 

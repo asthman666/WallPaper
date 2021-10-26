@@ -3,7 +3,9 @@ using Microsoft.Win32;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using WallPaper.Core.Entities;
+using WallPaper.Core.Interfaces;
 using WallPaper.Infrastructure;
 
 namespace BingImageAsWallPaper
@@ -12,11 +14,13 @@ namespace BingImageAsWallPaper
     {
         private readonly FileUtil _fileUtil;
         private readonly AppDbContext _dbContext;
+        private readonly IRepository _repository;
 
-        public Wallpaper(FileUtil fileUtil, AppDbContext dbContext)
+        public Wallpaper(FileUtil fileUtil, AppDbContext dbContext, IRepository repository)
         {
             _fileUtil = fileUtil;
             _dbContext = dbContext;
+            _repository = repository;
         }
 
         const int SPI_SETDESKWALLPAPER = 20;
@@ -107,14 +111,14 @@ namespace BingImageAsWallPaper
             return false;
         }
 
-        public void LikeCurrentWallPaper()
+        public async Task LikeCurrentWallPaper()
         {
             var (path, _) = GetWallPaper();
-            if (_dbContext.WallPaper.Where(x => x.ImageName == path).FirstOrDefault() != null)
+            var entities = await _repository.ListAsync<WallPaperDbEntity>();
+            if (entities.Where(x => x.ImageName == path).FirstOrDefault() != null)
                 return;
 
-            _dbContext.Add(new WallPaperDbEntity { ImageName = path, Favorite = true });
-            _dbContext.SaveChanges();
+            await _repository.AddAsync(new WallPaperDbEntity { ImageName = path, Favorite = true });
         }
 
         public int SetFavoriteWallPaper()

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.IO;
+using WallPaper.Core.Interfaces;
 using WallPaper.Infrastructure.AppDbConnectionOption;
 
 namespace WallPaper.Infrastructure
@@ -22,6 +23,7 @@ namespace WallPaper.Infrastructure
             services.AddDbContext<AppDbContext>(options => 
                 options.UseSqlite($"Data Source={connectionString}")
             );
+            services.AddSingleton<IRepository, EfRepository>();
         }        
     }
 }
