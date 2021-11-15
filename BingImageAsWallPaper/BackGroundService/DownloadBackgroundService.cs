@@ -9,6 +9,7 @@ namespace BingImageAsWallPaper.BackGroundService
     public class DownloadBackgroundService : BackgroundService
     {
         private const int DELEYTIME = 6 * 3600 * 1000; // 6 hour
+        private const int BEGIN_DELEYTIME = 300; // 5 minute
 
         private readonly IDownloader _imageDownload;
         private readonly ILogger<DownloadBackgroundService> _logger;
@@ -24,6 +25,7 @@ namespace BingImageAsWallPaper.BackGroundService
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogWarning("download wallpaper running");
+                await Task.Delay(BEGIN_DELEYTIME, stoppingToken);
                 await _imageDownload.DownloadAll();
                 await Task.Delay(DELEYTIME, stoppingToken);
             }
